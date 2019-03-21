@@ -17,6 +17,7 @@
     }
     .content{
       padding: 0 200px;
+      overflow: hidden;
     }
     .text{
       text-align: center;
@@ -47,15 +48,20 @@
       position: relative;
       left: 200px;
     }
+    /* .clearFix::after {
+      content: "";
+      clear: both;
+      display: block;
+    } */
   </style>
 </head>
 <body>
   <header>圣杯布局</header>
-  <div class="content">
+  <div class="content clearFix">
     <div class="main text">main</div>
     <div class="left text">left</div>
     <div class="right text">right</div>
-    <div style="clear: both"></div>
+    <!-- <div style="clear: both"></div> -->
   </div>
   <footer>footer</footer>
 </body>
