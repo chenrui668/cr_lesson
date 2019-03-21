@@ -12,5 +12,5 @@
 
 
 ## js
-setInterval (clearInterval)
-setTimeout
+setInterval (clearInterval) 间歇调用  每个一个间歇时间调用一次（循环调用） 
+setTimeout  超时调用  超过设定时间调用（只调用一次）
