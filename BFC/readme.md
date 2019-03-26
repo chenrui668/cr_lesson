@@ -1,5 +1,5 @@
 # BFC的概念
-Block Formatting Contrxt (块级格式化上下文)
+Block Formatting Context (块级格式化上下文)
 
 # BFC的渲染规则
 1. BFC在页面上是一个独立的容器，最显著的效果就是建立一个隔离的空间，
