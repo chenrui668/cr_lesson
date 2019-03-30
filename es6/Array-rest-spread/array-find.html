@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>array find</title>
+</head>
+<body>
+    <script>
+        const ages = [
+            {name: '李雷', age: 18},
+            {name: '李雷1', age: 10},
+            {name: '韩梅梅', age: 18},
+            {name: '韩梅梅1', age: 10}
+        ];
+        // 20 find() 返回满足条件的一个值
+        const this_age = ages.find((age) => age.age > 18);
+
+        // 1  findIndex() 返回满足条件的一个值的下标
+        const this_age_index = ages.findIndex((age) => age.age > 18);
+        // 返回所有满足条件的值
+        const this_age_filter = ages.filter((age) => age.age > 18);
+        // 必须每个值都满足条件才返回true
+        const this_age_every = ages.every((age) => age.age > 9);
+        // 只需要有一个值满足  就返回true
+        const this_age_some = ages.some((age) => age.age > 10);
+        
+        console.log(this_age_some); 
+        // console.log(this_age, this_age_filter, this_age_index);
+    </script>
+</body>
+</html>
