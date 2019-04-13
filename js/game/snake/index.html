@@ -28,17 +28,31 @@
     <script>
         // x +- 10
         let dx = 10, dy = 0;
-        const GAME_SPEED = 500;
+        let randomx = Math.ceil(Math.random()*30 - 1)*10;
+        let randomy = Math.ceil(Math.random()*30 - 1)*10;
+        let score = 0;
+        let GAME_SPEED = 300 - score*20;
         function main () {
-            setTimeout(() => {
+            let gameOver = setTimeout(() => {
                 clearCanvas();
+                
                 // 初始绘制蛇
                 advanceSnake();
+                addSnake();
                 drawSnake();
-                main();
+                drawRandomPoint();
+                if (snake[0].x < 0 || snake[0].x >= 300 || snake[0].y < 0 || snake[0].y >= 300) {
+                    clearTimeout(gameOver);
+                    alert('game over');
+                    window.location.reload();
+                }else{
+                    main();
+                }
             }, GAME_SPEED);
+            
         }
         main();
+        
         // snake 长长 Push
         // 边界
         let snake = [
@@ -82,12 +96,33 @@
             ctx.strokeRect(part.x, part.y, 10, 10);
         }
 
+        function drawRandomPoint() {
+            
+            ctx.fillStyle = 'red';
+            ctx.strokeStyle = 'red';
+            ctx.fillRect(randomx, randomy, 10, 10);
+            ctx.strokeRect(randomx, randomy, 10, 10);
+        }
+        
+
         function advanceSnake() {
             // canvas 上一次的基础上更绘下一次
             // 全动吗？ 最前面加一个， 第一个前进一个， 最后一个移除
             const head = { x: snake[0].x + dx, y: snake[0].y + dy};
             snake.unshift(head);//在数组前面插入 push 在尾部插入
             snake.pop();
+        }
+        const allscore = document.getElementById('score');
+        function addSnake() {
+            if (snake[0].x === randomx && snake[0].y === randomy) {
+                randomx = Math.ceil(Math.random()*31 - 1)*10;
+                randomy = Math.ceil(Math.random()*31 - 1)*10;
+                score += 1
+                allscore.innerHTML = score;
+                // drawRandomPoint();
+                const addhead = { x: snake[0].x + dx, y: snake[0].y + dy};
+                snake.unshift(addhead);
+            }
         }
         function changeDirection(event) {
             const LEFT_KEY = 37;
