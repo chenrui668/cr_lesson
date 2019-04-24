@@ -14,14 +14,25 @@ Page({
     indicatorColor: "#eee",
     autoplay: true,
     interval: 3000,
-    duration: 1000
+    duration: 500,
+    city: '南昌',
+    items: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    console.log(1)
+  onLoad: function () {
+    let that = this
+    wx.request({
+      url: 'https://www.easy-mock.com/mock/5ca457fd4767c3737055c8a7/example/mydata',
+      success: function(res) {
+        console.log(res)
+        that.setData({
+          items: res.data.data.movieList
+        })
+      }
+    })
   },
 
   /**
