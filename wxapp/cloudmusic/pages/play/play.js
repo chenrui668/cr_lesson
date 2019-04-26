@@ -8,7 +8,17 @@ Page({
   data: {
     isPlay: false
   },
-
+  togglePlayStatus() {
+    if (this.data.isPlay === true){
+      this.setData({
+        isPlay: false
+      })
+    }else {
+      this.setData({
+        isPlay: true
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -25,7 +35,6 @@ Page({
         if (res.data.code === 200) {
           this.createBackgroundAudio(res.data.data[0] || {});
         }
-        
       }
     })
     wx.request({

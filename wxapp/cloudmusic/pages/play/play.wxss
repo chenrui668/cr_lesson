@@ -1,37 +1,74 @@
 /* pages/play/play.wxss */
 page, .body, .bg {
-
+    background-color: (0,0,0,0.5);
     height: 100%;
+    z-index: 1;
 }
 .sing-brief {
     position: absolute;
-    left: 10px;
-    top: 10px;
     color: #bb4e55;
+    padding-left: 10px;
+    padding-top: 10px; 
+    z-index: 3;
 }
 .song-name {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 580;
+    /* color: #fff; */
 }
 .singer-name {
     font-size: 12px;
+    margin-top: 5px;
+    /* color: rgba(255, 255, 255, 0.7); */
 }
 .sing-show {
     position: relative;
+    top: 40px;
     width: 100%;
-    height: 85%;
+    height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.bgImage {
+    position: absolute;
+    height: 100%;
+    filter: blur(20px);
+    transform: scale(1.5);
+    z-index: 0;
 }
 .stick {
     position: absolute;
     top: 15%;
     left: 50%;
-    width: 100px;
-    height: 130px;
-    transform: translate(-20%, -50%) rotate(-20deg);
-    transform-origin: top;
+    width: 200rpx;
+    height: 260rpx;
+    transform: translate(-20%, -30%);
+    z-index: 3;
+}
+.stick.stop {
+    animation: stop 0.5s linear forwards;
+    transform-origin: 10px 10px;
+}
+@keyframes stop {
+    0% {
+        transform: translate(-20%, -30%) rotateZ(0deg);
+    }
+    100% {
+        transform: translate(-20%, -30%) rotateZ(-20deg);
+    }
+}
+.stick.unstop {
+    animation: unstop 0.5s linear forwards;
+    transform-origin: 10px 10px;
+}
+@keyframes unstop {
+    0% {
+        transform: translate(-20%, -30%) rotateZ(-20deg);
+    }
+    100% {
+        transform: translate(-20%, -30%) rotateZ(0deg);
+    }
 }
 .disk {
     position: absolute;
@@ -41,14 +78,18 @@ page, .body, .bg {
     width: 500rpx;
     height: 500rpx;
     border-radius: 50%;
+    z-index: 1;
 }
 .coverImage {
+    position: absolute;
     width: 370rpx;
     height: 370rpx;
     border-radius: 50%;
+    z-index: 2;
+    animation: rotate 15s linear infinite;
 }
 .coverImage.play {
-    animation: rotate 15s linear infinite;
+    animation-play-state: paused; 
 }
 @keyframes rotate {
     0% {
@@ -57,4 +98,9 @@ page, .body, .bg {
     100% {
         transform: rotate(360deg);
     }
+}
+.play-btn {
+    position: absolute;
+    width: 100%;
+    margin-bottom: 20px;
 }
