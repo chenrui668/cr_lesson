@@ -25,49 +25,50 @@ page, .body, .bg {
     position: relative;
     top: 40px;
     width: 100%;
-    height: 80%;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .bgImage {
     position: absolute;
-    height: 100%;
+    height: 80%;
+    width: 100%;
     filter: blur(20px);
     transform: scale(1.5);
     z-index: 0;
 }
 .stick {
     position: absolute;
-    top: 15%;
+    top: 12%;
     left: 50%;
-    width: 200rpx;
-    height: 260rpx;
+    width: 74px;
+    height: 109px;
     transform: translate(-20%, -30%);
     z-index: 3;
 }
 .stick.stop {
-    animation: stop 0.5s linear forwards;
-    transform-origin: 10px 10px;
+    animation: stop 0.3s linear forwards;
+    transform-origin: 11px 11px;
 }
 @keyframes stop {
     0% {
-        transform: translate(-20%, -30%) rotateZ(0deg);
+        transform: translate(-20%, -30%) rotateZ(-5deg);
     }
     100% {
-        transform: translate(-20%, -30%) rotateZ(-20deg);
+        transform: translate(-20%, -30%) rotateZ(-24deg);
     }
 }
 .stick.unstop {
-    animation: unstop 0.5s linear forwards;
-    transform-origin: 10px 10px;
+    animation: unstop 0.3s linear forwards;
+    transform-origin: 11px 11px;
 }
 @keyframes unstop {
     0% {
-        transform: translate(-20%, -30%) rotateZ(-20deg);
+        transform: translate(-20%, -30%) rotateZ(-24deg);
     }
     100% {
-        transform: translate(-20%, -30%) rotateZ(0deg);
+        transform: translate(-20%, -30%) rotateZ(-5deg);
     }
 }
 .disk {
@@ -75,18 +76,20 @@ page, .body, .bg {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 500rpx;
-    height: 500rpx;
+    width: 240px;
+    height: 240px;
     border-radius: 50%;
+    border: 4px solid rgba(255,255,255,0.1);
     z-index: 1;
 }
 .coverImage {
     position: absolute;
-    width: 370rpx;
-    height: 370rpx;
+    top: 112px;
+    width: 177px;
+    height: 177px;
     border-radius: 50%;
     z-index: 2;
-    animation: rotate 15s linear infinite;
+    animation: rotate 20s linear infinite;
 }
 .coverImage.play {
     animation-play-state: paused; 
@@ -101,6 +104,6 @@ page, .body, .bg {
 }
 .play-btn {
     position: absolute;
+    bottom: 20px;
     width: 100%;
-    margin-bottom: 20px;
 }

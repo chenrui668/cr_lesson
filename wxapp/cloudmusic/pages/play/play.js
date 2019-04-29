@@ -10,10 +10,12 @@ Page({
   },
   togglePlayStatus() {
     if (this.data.isPlay === true){
+      wx.getBackgroundAudioManager().pause();
       this.setData({
         isPlay: false
       })
     }else {
+      wx.getBackgroundAudioManager().play();
       this.setData({
         isPlay: true
       })
@@ -23,7 +25,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.id);
+    // console.log(options.id);
     const id = options.id;
     wx.request({
       url: app.globalData.baseUrl + '/song/url',
@@ -31,7 +33,7 @@ Page({
         id: id
       },
       success: res => {
-        console.log('歌曲详情', res);
+        console.log('歌曲详情', res.data);
         if (res.data.code === 200) {
           this.createBackgroundAudio(res.data.data[0] || {});
         }
@@ -43,7 +45,7 @@ Page({
         ids: id
       },
       success: (res) => {
-        console.log('歌曲信息', res);
+        // console.log('歌曲信息', res);
         this.setData({
           song: res.data.songs[0]
         })
