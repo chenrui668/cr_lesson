@@ -33,8 +33,9 @@ Page({
       data: {},
       success(res) {
         self.setData({
-          groupList: res.result
+          groupList: res.result.data
         })
+        // console.log(res.result.data);
       },
       fail(error) {
         console.log(error);
