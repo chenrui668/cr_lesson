@@ -4,7 +4,7 @@ Page({
   },
   _setStartDataEvent (e) {
     console.log(e);
-    if (e.datail.start === false) {
+    if (e.detail.start === false) {
       this.setData({
         start: false
       })
