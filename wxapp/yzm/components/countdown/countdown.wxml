@@ -1,0 +1,3 @@
+<view>
+    {{timerText}}{{start? 's后重试':''}}
+</view>
