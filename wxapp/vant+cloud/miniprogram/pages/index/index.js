@@ -1,5 +1,5 @@
 // miniprogram/pages/index/index.js
-import Notify from '../dist/notify/notify'
+import Notify from '../dist/notify/notify';
 Page({
 
   /**
@@ -15,16 +15,17 @@ Page({
     })
   },
   onGroupNameChange(event) {
+    // console.log(event)
     this.setData({
       groupName: event.detail
     })
   },
-  colseDialog() {
+  closeDialog() {
     this.setData({
       newGroupModal: false
     })
   },
-  creatGroup() {
+  createGroup() {
     let self = this
     if (self.data.groupName === '') {
       Notify({
@@ -33,9 +34,9 @@ Page({
         selector: '#notify-selector',
         backgroundColor: '#dc3545'
       });
-      self.selectComponent('#new-group-modal').stopLoading()
+      self.selectComponent('#new-group-modal').stopLoading();
       return
-    } else {
+    }else {
       wx.cloud.callFunction({
         name: 'createGroup',
         data: {
@@ -45,26 +46,25 @@ Page({
           self.setData({
             newGroupModal: false,
             groupName: ''
-          });
+          })
           Notify({
             text: '新建成功',
-            duration: 1500,
+            duration: 1000,
             selector: '#notify-selector',
             backgroundColor: '#28a745'
           });
           setTimeout(() => {
             wx.switchTab({
-              url: `/pages/group/group`
+              url: '/pages/group/group'
             })
-          },1500)
+          },1000)
         },
         fail(error) {
-          console.log(error);
+          console.log(error)
         }
       })
     }
   },
-
   /**
    * 生命周期函数--监听页面加载
    */

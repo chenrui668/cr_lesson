@@ -33,7 +33,7 @@ Page({
       data: {},
       success(res) {
         self.setData({
-          groupList: res.result.data
+          groupList: res.result
         })
         // console.log(res.result.data);
       },

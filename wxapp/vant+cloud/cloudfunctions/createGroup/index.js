@@ -14,8 +14,17 @@ exports.main = async (event, context) => {
       name: event.groupName,
       createBy: userInfo.openId,
       createTime: new Date(),
-      deleted: false,
-      updateTime: new Date() 
+      delete: false,
+      updateTime: new Date()
     }
+  })
+  .then(res => {
+    return db.collection('user-group').add({
+      data: {
+        groupId: res._id,
+        userId: userInfo.openId,
+        invalid: false
+      }
+    })
   })
 }
