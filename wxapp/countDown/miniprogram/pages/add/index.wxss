@@ -15,8 +15,8 @@
     top: -5rpx;
     width: 24rpx;
     height: 24rpx;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
+    border-top: 3rpx solid black;
+    border-left: 3rpx solid black;
     transform-origin: 100% 0;
     transform: rotate(-45deg);
 }
@@ -28,12 +28,57 @@
 .content {
     margin-top: 130rpx;
 }
-.mian {
+.main {
     width: 1400rpx;
     height: 1000rpx;
-    border: 3px solid #e6e6e6;
+    border: 4rpx solid #e6e6e6;
     margin-top: 130rpx;
     border-radius: 20px;
     transform-origin: 50% 0;
     transform: scale(0.5);
+    text-align: center;
+}
+.type {
+    display: block;
+    width: 260rpx;
+    height: 260rpx;
+    border: 4rpx solid #e6e6e6;
+    border-radius: 50%;
+    margin-top: 30rpx;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+}
+.type image {
+    width: 260rpx;
+    margin-top: 30rpx;
+}
+.main .change {
+    display: inline-block;
+    margin-top: 10rpx;
+    color: #aaaaaa;
+    font-size: 24px;
+}
+.name {
+    width: 1000rpx;
+    height: 160rpx;
+    border-bottom: 4rpx solid #e6e6e6;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+    margin-top: 50rpx;
+    text-align: left;
+}
+.name .title {
+    display: inline-block;
+    font-size: 32px;
+    position: relative;
+    top: -80rpx;
+}
+.name input {
+    height: 140rpx;
+    width: 500rpx;
+    display: inline-block;
+    font-size: 32px;
+    padding: 0;
+    margin-top: 20rpx;
+    margin-left: 60rpx;
 }

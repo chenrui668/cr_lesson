@@ -1,11 +1,18 @@
 <view class="container">
     <view class="header">
-        <view class="back"></view>
+        <view class="back" bind:tap="back"></view>
         <text>添加倒数日</text>
     </view>
     <view class="content">
-        <view class="mian">
-            
+        <view class="main">
+            <view class="type">
+                <image mode="widthFix" src="../../images/type-1.png" />
+            </view>
+            <text class="change">切换类型</text>
+            <view class="name">
+                <text class="title">名称</text>
+                <input type="text" focus="true" placeholder="请输入名称"/>
+            </view>
         </view>
     </view>
 </view>
