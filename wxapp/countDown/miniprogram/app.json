@@ -1,0 +1,11 @@
+{
+  "pages": [
+    "pages/add/index",
+    "pages/index/index"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

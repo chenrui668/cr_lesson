@@ -1,0 +1,11 @@
+<view class="container">
+    <view class="header">
+        <view class="back"></view>
+        <text>添加倒数日</text>
+    </view>
+    <view class="content">
+        <view class="mian">
+            
+        </view>
+    </view>
+</view>
