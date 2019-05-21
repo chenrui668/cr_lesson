@@ -8,6 +8,11 @@
     height: 130rpx;
     background-color: #f6f5f5;
 }
+.click {
+    display: inline-block;
+    width: 80rpx;
+    height: 60rpx;
+}
 .back {
     display: inline-block;
     position: relative;
@@ -23,62 +28,95 @@
 .header text {
     display: inline-block;
     margin-top: 64rpx;
-    margin-left: 50rpx;
 }
 .content {
     margin-top: 130rpx;
 }
 .main {
-    width: 1400rpx;
-    height: 1000rpx;
-    border: 4rpx solid #e6e6e6;
+    width: 700rpx;
+    height: 580rpx;
+    border: 2rpx solid #e6e6e6;
     margin-top: 130rpx;
-    border-radius: 20px;
-    transform-origin: 50% 0;
-    transform: scale(0.5);
+    border-radius: 10px;
     text-align: center;
 }
 .type {
     display: block;
-    width: 260rpx;
-    height: 260rpx;
-    border: 4rpx solid #e6e6e6;
+    width: 130rpx;
+    height: 130rpx;
+    border: 2rpx solid #e6e6e6;
     border-radius: 50%;
-    margin-top: 30rpx;
-    margin-left: 50%;
-    transform: translate(-50%, 0);
+    margin: 15rpx auto 0 auto;
 }
 .type image {
-    width: 260rpx;
-    margin-top: 30rpx;
+    width: 130rpx;
+    margin-top: 20rpx;
 }
 .main .change {
     display: inline-block;
-    margin-top: 10rpx;
+    margin-top: 5rpx;
     color: #aaaaaa;
-    font-size: 24px;
+    font-size: 12px;
 }
-.name {
-    width: 1000rpx;
-    height: 160rpx;
-    border-bottom: 4rpx solid #e6e6e6;
-    margin-left: 50%;
-    transform: translate(-50%, 0);
-    margin-top: 50rpx;
-    text-align: left;
-}
-.name .title {
-    display: inline-block;
-    font-size: 32px;
-    position: relative;
-    top: -80rpx;
-}
-.name input {
-    height: 140rpx;
+.title {
     width: 500rpx;
+    height: 90rpx;
+    border-bottom: 2rpx solid #e6e6e6;
+    margin: 25rpx auto 0 auto;
+    text-align: left;
+    display: flex;
+    justify-items: center;
+}
+.title .title-left {
     display: inline-block;
-    font-size: 32px;
+    font-size: 16px;
+    color: #3d3d3d;
+    margin-top: 10rpx;
+}
+.title input {
+    height: 65rpx;
+    width: 320rpx;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 40rpx;
     padding: 0;
-    margin-top: 20rpx;
-    margin-left: 60rpx;
+}
+.input {
+    margin-top: 0rpx;
+    margin-bottom: 5rpx;
+}
+.title .title-num {
+    font-size: 13px;
+    color: #aaaaaa;
+    margin-top: 16rpx;
+}
+.date {
+    width: 500rpx;
+    height: 80rpx;
+    border-bottom: 2rpx solid #e6e6e6;
+    margin: 25rpx auto 0 auto;
+    text-align: left;
+    display: flex;
+    justify-items: center;
+}
+.date .date-left {
+    display: inline-block;
+    font-size: 16px;
+    color: #3d3d3d;
+}
+.date .date-text {
+    font-size: 16px;
+    margin-left: 40rpx;
+}
+.button {
+    width: 350rpx;
+    height: 70rpx;
+    background-color: #f56165;
+    border-radius: 70rpx;
+    margin: 30rpx auto 0 auto;
+}
+.button text {
+    font-size: 15px;
+    color: #e6e6e6;
+    line-height: 70rpx;
 }

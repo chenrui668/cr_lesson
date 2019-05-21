@@ -3,20 +3,22 @@
         <text>时光倒数日</text>
     </view>
     <view class="content">
-        <view class="main">
-            <image src="../../images/main.png"/>
-        </view>
-        <view class="text">
-            <view class="text-top">
-                <text>记录并分享</text>
+        <block>
+            <view class="main">
+                <image src="../../images/main.png"/>
             </view>
-            <view class="text-center">
-                <text>每天都有不一样的意义，共同留下美好的回忆。</text>
+            <view class="text">
+                <view class="text-top">
+                    <text>记录并分享</text>
+                </view>
+                <view class="text-center">
+                    <text>每天都有不一样的意义，共同留下美好的回忆。</text>
+                </view>
+                <view class="text-foot">
+                    <text>点击右下角的“+”，开启你的时光之旅吧。</text>
+                </view>
             </view>
-            <view class="text-foot">
-                <text>点击右下角的“+”，开启你的时光之旅吧。</text>
-            </view>
-        </view>
+        </block>
     </view>
     <view class="add" bind:tap="toAdd">
         <image src="../../images/add.png"/>

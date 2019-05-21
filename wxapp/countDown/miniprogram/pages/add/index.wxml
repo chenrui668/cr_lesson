@@ -1,6 +1,8 @@
 <view class="container">
     <view class="header">
-        <view class="back" bind:tap="back"></view>
+        <view class="click" bind:tap="back">
+            <view class="back"></view>
+        </view>
         <text>添加倒数日</text>
     </view>
     <view class="content">
@@ -9,9 +11,17 @@
                 <image mode="widthFix" src="../../images/type-1.png" />
             </view>
             <text class="change">切换类型</text>
-            <view class="name">
-                <text class="title">名称</text>
-                <input type="text" focus="true" placeholder="请输入名称"/>
+            <view class="title">
+                <text class="title-left">名称</text>
+                <input type="text" focus="true" placeholder-class="input" placeholder="请输入名称"/>
+                <text class="title-num">0/10</text>
+            </view>
+            <view class="date">
+                <text class="date-left">日期</text>
+                <text class="date-text">2019-05-21</text>
+            </view>
+            <view class="button">
+                <text>保存</text>
             </view>
         </view>
     </view>
