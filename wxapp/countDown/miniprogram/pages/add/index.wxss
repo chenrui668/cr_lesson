@@ -1,5 +1,7 @@
 .container {
     width: 100%;
+    height: 100%;
+    position: relative;
 }
 .header {
     position: fixed;
@@ -7,8 +9,9 @@
     width: 100%;
     height: 130rpx;
     background-color: #f6f5f5;
+    z-index: 10;
 }
-.click {
+.click-area {
     display: inline-block;
     width: 80rpx;
     height: 60rpx;
@@ -30,18 +33,21 @@
     margin-top: 64rpx;
 }
 .content {
+    width: 100%;
     margin-top: 130rpx;
 }
 .main {
     width: 700rpx;
     height: 580rpx;
     border: 2rpx solid #e6e6e6;
-    margin-top: 130rpx;
+    margin: 130rpx auto 0 auto;
     border-radius: 10px;
     text-align: center;
 }
 .type {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 130rpx;
     height: 130rpx;
     border: 2rpx solid #e6e6e6;
@@ -49,14 +55,13 @@
     margin: 15rpx auto 0 auto;
 }
 .type image {
-    width: 130rpx;
-    margin-top: 20rpx;
+    width: 80rpx;
 }
 .main .change {
     display: inline-block;
     margin-top: 5rpx;
     color: #aaaaaa;
-    font-size: 12px;
+    font-size: 24rpx;
 }
 .title {
     width: 500rpx;
@@ -65,30 +70,23 @@
     margin: 25rpx auto 0 auto;
     text-align: left;
     display: flex;
-    justify-items: center;
+    align-items: center;
 }
 .title .title-left {
-    display: inline-block;
-    font-size: 16px;
+    font-size: 32rpx;
     color: #3d3d3d;
-    margin-top: 10rpx;
 }
 .title input {
     height: 65rpx;
     width: 320rpx;
     display: inline-block;
-    font-size: 16px;
+    font-size: 32rpx;
     margin-left: 40rpx;
     padding: 0;
 }
-.input {
-    margin-top: 0rpx;
-    margin-bottom: 5rpx;
-}
 .title .title-num {
-    font-size: 13px;
+    font-size: 26rpx;
     color: #aaaaaa;
-    margin-top: 16rpx;
 }
 .date {
     width: 500rpx;
@@ -97,15 +95,14 @@
     margin: 25rpx auto 0 auto;
     text-align: left;
     display: flex;
-    justify-items: center;
+    align-items: top;
 }
 .date .date-left {
-    display: inline-block;
-    font-size: 16px;
+    font-size: 32rpx;
     color: #3d3d3d;
 }
 .date .date-text {
-    font-size: 16px;
+    font-size: 32rpx;
     margin-left: 40rpx;
 }
 .button {
@@ -116,7 +113,76 @@
     margin: 30rpx auto 0 auto;
 }
 .button text {
-    font-size: 15px;
+    font-size: 30rpx;
     color: #e6e6e6;
     line-height: 70rpx;
 }
+.bg {
+    background-color: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    z-index: 2;
+}
+.bg.show {
+    animation: showBg 0.2s linear forwards;
+}
+@keyframes showBg {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+    1% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.bg.hide {
+    animation: hideBg 0.2s linear forwards;
+}
+@keyframes hideBg {
+    0% {
+        opacity: 1;
+    }
+    99% {
+        opacity: 0;
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(0, 100%);
+        opacity: 0;
+    }
+}
+.click-box {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+.click-box.show {
+    display: block;
+}
+.click-box.hide {
+    display: none;
+}
+.choose-box {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 800rpx;
+    z-index: 4;
+    transition: transform 0.2s;
+    transform: translate(0, 800rpx);
+}
+.choose-box.show {
+    transform: translate(0, 0);
+}
+.choose-box_cancle {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100rpx;
+    text-align: center;
+    background-color: white;
+    line-height: 100rpx;
+} 

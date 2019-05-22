@@ -1,20 +1,20 @@
 <view class="container">
     <view class="header">
-        <view class="click" bind:tap="back">
+        <view class="click-area" bind:tap="back">
             <view class="back"></view>
         </view>
         <text>添加倒数日</text>
     </view>
     <view class="content">
         <view class="main">
-            <view class="type">
-                <image mode="widthFix" src="../../images/type-1.png" />
+            <view class="type" bindtap="chooseTitle">
+                <image mode="widthFix" src="../../images/type-2.png" />
             </view>
             <text class="change">切换类型</text>
             <view class="title">
                 <text class="title-left">名称</text>
-                <input type="text" focus="true" placeholder-class="input" placeholder="请输入名称"/>
-                <text class="title-num">0/10</text>
+                <input type="text" focus="true" bindinput="bindKeyInput" placeholder="请输入名称"/>
+                <text class="title-num">{{num}}/10</text>
             </view>
             <view class="date">
                 <text class="date-left">日期</text>
@@ -23,6 +23,15 @@
             <view class="button">
                 <text>保存</text>
             </view>
+        </view>
+    </view>
+    <view class="bg {{showTitle ? 'show' : 'hide'}}" style="width:{{width}}px; height:{{height}}px;">
+    </view>
+    <view class="click-box {{showTitle ? 'show' : 'hide'}}" bindtap="hideTitle">
+    </view>
+    <view class="choose-box {{showTitle ? 'show' : ''}}">
+        <view class="choose-box_cancle" bindtap="hideTitle">
+            <text>取消</text>
         </view>
     </view>
 </view>
