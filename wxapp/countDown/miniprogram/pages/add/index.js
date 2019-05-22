@@ -1,4 +1,5 @@
 // miniprogram/pages/add/index.js
+const db = wx.cloud.database();
 Page({
 
   /**
@@ -9,12 +10,20 @@ Page({
     num: 0,
     height: 0,
     width: 0,
-    showTitle: false  
+    showTitle: false,
+    type: []
   },
   onLoad: function () {
     this.setData({
       height: wx.getSystemInfoSync().windowHeight,
       width: wx.getSystemInfoSync().windowWidth
+    })
+    db.collection('type').get({
+      success: (res) => {
+        this.setData({
+          type: res.data
+        })
+      }
     })
   },
   back () {
