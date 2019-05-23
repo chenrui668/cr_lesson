@@ -8,19 +8,27 @@
     <view class="content">
         <view class="main">
             <view class="type" bindtap="chooseTitle">
-                <image mode="widthFix" src="../../images/type-2.png" />
+                <image mode="widthFix" src="{{typeUrl}}" />
             </view>
             <text class="change">切换类型</text>
             <view class="title">
                 <text class="title-left">名称</text>
-                <input type="text" focus="true" bindinput="bindKeyInput" placeholder="请输入名称"/>
+                <input type="text" focus="{{focus}}" bindinput="bindKeyInput" bindtap="input" placeholder="请输入名称"/>
                 <text class="title-num">{{num}}/10</text>
             </view>
             <view class="date">
                 <text class="date-left">日期</text>
-                <text class="date-text">2019-05-21</text>
+                <picker
+                    mode="date"
+                    value="{{date}}"
+                    start="1990-01-01"
+                    end="2030-12-31"
+                    bindchange="bindDateChange"
+                >
+                    <text class="date-text">{{date}}</text>
+                </picker>
             </view>
-            <view class="button">
+            <view class="button" bindtap="save">
                 <text>保存</text>
             </view>
         </view>
@@ -28,11 +36,14 @@
     <view class="bg {{showTitle ? 'show' : 'hide'}}" style="width:{{width}}px; height:{{height}}px;" bindtap="hideTitle">
     </view>
     <view class="choose-box {{showTitle ? 'show' : ''}}">
-        <view class="choose-box_type" wx:for="{{type}}" wx:key="index">
-            <image mode="widthFix" src="{{item.imgUrl}}" />
-            <text class="choose-type_name">{{item.name}}</text>
-            <text class="choose-type_detail">{{item.detail}}</text>
-        </view>
+        <block wx:for="{{type}}" wx:key="index">
+            <view class="choose-box_type" data-url="{{item.imgUrl}}" bindtap="changeTitle">
+                <image mode="widthFix" src="{{item.imgUrl}}" />
+                <text class="choose-type_name">{{item.name}}</text>
+                <text class="choose-type_detail">{{item.detail}}</text>
+            </view>
+        </block>
+        
         <view class="choose-box_cancle" bindtap="hideTitle">
             <text>取消</text>
         </view>

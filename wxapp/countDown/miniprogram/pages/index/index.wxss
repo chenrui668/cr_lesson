@@ -1,5 +1,6 @@
 .container {
     width: 100%;
+    padding-top: 130rpx;
 }
 .header {
     position: fixed;
@@ -11,26 +12,23 @@
 .header text {
     display: block;
     margin-top: 60rpx;
-    margin-left: 20rpx;
-}
-.content {
-    margin-top: 130rpx;
+    margin-left: 40rpx;
+    font-size: 36rpx;
 }
 .main {
     width: 160rpx;
     height: 160rpx;
     margin: 200rpx auto 0 auto;
-    border: 1px solid #e6e6e6;
+    border: 2rpx solid #e6e6e6;
     border-radius: 50%;
     text-align: center;
-    /* vertical-align: middle; */
 }
 .main image {
     margin-top: 40rpx;
     width: 80rpx;
     height: 80rpx;
 }
-.text {
+.content .text {
     margin-top: 30rpx;
     color: #aaaaaa;
     text-align: center;
@@ -40,11 +38,11 @@
 }
 .text-center {
     margin-top: 14rpx;
-    font-size: 13px;
+    font-size: 26rpx;
 }
 .text-foot {
     margin-top: 68rpx;
-    font-size: 13px;
+    font-size: 26rpx;
 }
 .add {
     height: 140rpx;
@@ -53,7 +51,7 @@
     bottom: 60rpx;
     right: 60rpx;
     border-radius: 50%;
-    box-shadow: 0 2px 10px #6b6b6b;
+    box-shadow: 0 4rpx 20rpx #6b6b6b;
 }
 .add image {
     position: relative;
@@ -61,4 +59,64 @@
     left: -5rpx;
     width: 150rpx;
     height: 150rpx;
+}
+.record {
+    height: 150rpx;
+    width: 700rpx;
+    border: 3rpx solid #dedede;
+    margin-top: 24rpx;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.record-left {
+    margin-left: 24rpx;
+}
+.record-left image {
+    width: 60rpx;
+}
+.record-center {
+    margin-left: 30rpx;
+    margin-bottom: 20rpx;
+}
+.record-center_title .left {
+    font-size: 24rpx;
+    color: #3d3d3d;
+}
+.record-center_title .title {
+    margin-left: 12rpx;
+    font-size: 34rpx;
+}
+.record-center_date {
+    font-size: 24rpx;
+    color: #3d3d3d;
+    margin-top: 10rpx;
+}
+.record-right {
+    position: absolute;
+    right: 20rpx;
+}
+.record-right_delete {
+    position: absolute;
+    right: 12rpx;
+    width: 36rpx;
+}
+.record-right_delete image{
+    width: 36rpx;
+}
+.record-right_remind {
+    margin-top: 46rpx;
+}
+.record-right_remind .text {
+    font-size: 24rpx;
+}
+.record-right_remind .day {
+    font-size: 36rpx;
+    margin: 0 10rpx;
+}
+.after {
+    color: #f56165;
+}
+.before {
+    color: #1296db;
 }

@@ -31,6 +31,7 @@
 .header text {
     display: inline-block;
     margin-top: 64rpx;
+    font-size: 36rpx
 }
 .content {
     width: 100%;
@@ -41,7 +42,7 @@
     height: 580rpx;
     border: 2rpx solid #e6e6e6;
     margin: 130rpx auto 0 auto;
-    border-radius: 10px;
+    border-radius: 20rpx;
     text-align: center;
 }
 .type {
@@ -174,6 +175,7 @@
     align-items: center;
     background-color: white;
     margin-bottom: 2rpx;
+    position: relative;
 }
 .choose-box_type image {
     width: 40rpx;
@@ -195,5 +197,6 @@
     height: 90rpx;
     text-align: center;
     background-color: white;
+    font-size: 34rpx;
     line-height: 90rpx;
 } 

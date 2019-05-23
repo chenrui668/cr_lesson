@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/add/index",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/add/index"
   ],
   "window": {
     "navigationStyle": "custom",
