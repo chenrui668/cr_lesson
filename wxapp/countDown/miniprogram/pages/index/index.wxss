@@ -74,6 +74,7 @@
 }
 .record-left image {
     width: 60rpx;
+    height: 60rpx;
 }
 .record-center {
     margin-left: 30rpx;
@@ -103,12 +104,14 @@
 }
 .record-right_delete image{
     width: 36rpx;
+    height: 36rpx;
 }
 .record-right_remind {
     margin-top: 46rpx;
 }
 .record-right_remind .text {
     font-size: 24rpx;
+    color: #3d3d3d;
 }
 .record-right_remind .day {
     font-size: 36rpx;

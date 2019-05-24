@@ -10,7 +10,7 @@
             <view class="record-center">
                 <view class="record-center_title">
                     <text class="left">距离</text>
-                    <text class="title {{item.isFuture ? 'after' : 'before'}}">{{item.title}}</text>
+                    <text class="title {{item.isFuture === false ? 'before' : 'after'}}">{{item.title}}</text>
                 </view>
                 <view class="record-center_date">
                     <text>{{item.targetDate}}</text>
@@ -20,8 +20,12 @@
                 <view class="record-right_delete" bindtap="delete" data-id="{{item._id}}">
                     <image src="../../images/delete.png" mode="widthFix" />
                 </view>
-                <view class="record-right_remind">
-                    <text class="text" wx:if="{{item.isFuture}}">还有</text>
+                <view class="record-right_remind" wx:if="{{item.isFuture === null}}">
+                    <text class="text">就是</text>
+                    <text class="day after">今天</text>
+                </view>
+                <view class="record-right_remind" wx:else>
+                    <text class="text" wx:if="{{item.isFuture === true}}">还有</text>
                     <text class="text" wx:else>已过去</text>
                     <text class="day {{item.isFuture ? 'after' : 'before'}}">{{item.remindDay}}</text>
                     <text class="text">天</text>
@@ -29,7 +33,7 @@
             </view>
         </view>
     </view>
-    <view class="content" wx:else>
+    <view class="content" hidden="{{!showContent}}"  wx:else>
         <view class="main">
             <image src="../../images/main.png" />
         </view>

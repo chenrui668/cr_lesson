@@ -8,12 +8,12 @@
     <view class="content">
         <view class="main">
             <view class="type" bindtap="chooseTitle">
-                <image mode="widthFix" src="{{typeUrl}}" />
+                <image src="{{typeUrl}}" />
             </view>
             <text class="change">切换类型</text>
             <view class="title">
                 <text class="title-left">名称</text>
-                <input type="text" focus="{{focus}}" bindinput="bindKeyInput" bindtap="input" placeholder="请输入名称"/>
+                <input type="text" focus="{{focus}}" maxlength="10" bindinput="bindKeyInput" bindtap="input" placeholder="请输入名称"/>
                 <text class="title-num">{{num}}/10</text>
             </view>
             <view class="date">

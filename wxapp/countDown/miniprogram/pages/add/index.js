@@ -83,26 +83,34 @@ Page({
     })
   },
   save() {
-    db.collection('record').add({
-      data: {
-        type: this.data.typeUrl,
-        title: this.data.inputValue,
-        targetDate: this.data.date,
-        remindDay: 0,
-        isFuture: true
-      },
-      success() {
-        wx.showToast({
-          title: '添加成功',   
-          icon: 'success', 
-          duration: 1000   
-        });
-        setTimeout( () => {
-          wx.navigateTo({
-            url: '../index/index'
-          })
-        }, 1000)
-      }
-    })
+    if (!this.data.inputValue) {
+      wx.showToast({
+        title: '名称不能为空',   
+        icon: 'none', 
+        duration: 1000   
+      });
+    }else {
+      db.collection('record').add({
+        data: {
+          type: this.data.typeUrl,
+          title: this.data.inputValue,
+          targetDate: this.data.date,
+          remindDay: 0,
+          isFuture: null
+        },
+        success() {
+          wx.showToast({
+            title: '添加成功',   
+            icon: 'success', 
+            duration: 1000   
+          });
+          setTimeout( () => {
+            wx.navigateTo({
+              url: '../index/index'
+            })
+          }, 1000)
+        }
+      })
+    }
   }
 })

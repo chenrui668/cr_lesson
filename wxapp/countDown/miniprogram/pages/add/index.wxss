@@ -57,6 +57,7 @@
 }
 .type image {
     width: 80rpx;
+    height: 80rpx;
 }
 .main .change {
     display: inline-block;
@@ -179,6 +180,7 @@
 }
 .choose-box_type image {
     width: 40rpx;
+    height: 40rpx;
 }
 .choose-box_type .choose-type_name {
     font-size: 34rpx;
