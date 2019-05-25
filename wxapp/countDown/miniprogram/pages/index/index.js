@@ -58,30 +58,6 @@ Page({
       url: '../add/index'
     })
   },
-  onPullDownRefresh:function()
-  {
-    // wx.showNavigationBarLoading() //在标题栏中显示加载
-    
-    // //模拟加载
-    // setTimeout(function()
-    // {
-    //   // complete
-    //   //wx.hideNavigationBarLoading() //完成停止加载
-    //   wx.stopPullDownRefresh() //停止下拉刷新
-    // },1500);
-    const that = this;
-    wx.showLoading({
-      title: '加载中',
-    })
-    db.collection('record').get({
-      success: (res) => {
-        let recordData = res.data;
-        that.addDay(recordData);
-        wx.hideLoading()
-        wx.stopPullDownRefresh()
-      }
-    })
-  },
   delete (event) {
     const that = this;
     wx.showModal({
