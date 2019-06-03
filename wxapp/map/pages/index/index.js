@@ -44,7 +44,6 @@ Page({
     for (let i = 0; i < ran; i ++) {
       let marker = {
         id: i,
-        title: '去这里',
         iconPath: '/images/map-bicycle.png',
         width: 52,
         height: 30
