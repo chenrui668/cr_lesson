@@ -31,9 +31,9 @@ export default {
     methods: {
         addCart (event) {
             // console.log(event)
-            // if (!event._constructed) {// 如果不存在这个属性，则为原生点击事件，不执行下面的函数
-            //     return 
-            // } 
+            if (!event._constructed) {// 如果不存在这个属性，则为原生点击事件，不执行下面的函数
+                return 
+            } 
             if (!this.food.count) {
                 this.$set(this.food, 'count', 1) // 手动添加数据
             }else {
@@ -42,9 +42,9 @@ export default {
             this.$emit('add', event.target) // 抛出函数给父组件，异步执行下落动画
         },
         decreaseCart () {
-            // if (!event._constructed) {// 如果不存在这个属性，则为原生点击事件，不执行下面的函数
-            //     return 
-            // }
+            if (!event._constructed) {// 如果不存在这个属性，则为原生点击事件，不执行下面的函数
+                return 
+            }
             if (this.food.count) {
                 this.food.count--
             }
