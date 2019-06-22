@@ -19,9 +19,6 @@ function App() {
   return (
     <Router>
       <Route path="/" component={ Layout }>
-        <Route path="/" component={ Layout }></Route>
-        <Route path="/table" component={Table}></Route>
-        <Route path="/label" component={Label}></Route>
       </Route>
     </Router>
   );
