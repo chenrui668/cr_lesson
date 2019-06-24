@@ -23,5 +23,6 @@ restful api
     CREATE   INSERT      POST
     READ     SELECT      GET
     UPDATE   UPDATE      PUT/PATCH {body: ''} PUT(修改全部) PATCH(修改一部分)
+    DELETE               DELETE
 
     状态切换， 使用定义的谓语动词
