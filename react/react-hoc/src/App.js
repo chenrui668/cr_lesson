@@ -5,13 +5,13 @@ import ShopCart from './ShopCart';
 import WithLogin from './WithLogin';
 import './App.css';
 
-const WithLoginStatus = WithLogin(LoginStatus);
-const WithShopCart = WithLogin(ShopCart); 
+// const WithLoginStatus = WithLogin(LoginStatus);
+// const WithShopCart = WithLogin(ShopCart); 
 function App() {
   return (
     <React.Fragment>
       <LoginStatus />
-      <ShopCart />
+      <ShopCart a="1" b="2"/>
       {/* <WithLoginStatus />
       <WithShopCart a="1" b="2"/> */}
     </React.Fragment>
