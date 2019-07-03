@@ -2,12 +2,19 @@ import React, { Component } from 'react';
 import Swiper from 'swiper';
 import { getCarousel, getNewAlbum } from '../../api/recommend';
 import { CODE_SUCCESS } from '../../api/config';
+import { createAlbumByItem } from '../../model/album';
 import 'swiper/dist/css/swiper.css';
 import './recommend.styl';
+import Scroll from '../../common/scroll/Scroll';
+import Loading from '../../common/loading/Loading';
+import Lazyload, { forceCheck } from 'react-lazyload';
 
 class Recommend extends Component {
     state = {
-        slideList: []
+        show: true,
+        slideList: [],
+        albumList: [],
+        refreshScroll: false
     }
     componentDidMount() {
         getCarousel().then(res => {
@@ -25,23 +32,40 @@ class Recommend extends Component {
         })
         getNewAlbum().then(res => {
             let albumList = res.albumlib.data.list;
-            console.log(albumList)
+            console.log('albumList', albumList);
             this.setState({
-                albumList
+                albumList,
+                show: false
+            }, () => {
+                // 刷新scroll
+                this.setState({
+                    refreshScroll: true
+                })
             })
         })
+
     }
     renderAlbum() {
         const { albumList = [] } = this.state;
         return albumList.map(item => {
+            // 渲染 album
+            const album = createAlbumByItem(item);
             return (
-                <div className="album-wrapper" key={item.album_mid}>
+                <div className="album-wrapper" key={album.mId}>
                     <div className="left">
-                        <img src={item.img} alt=""/>
+                        <Lazyload>
+                            <img src={album.img} width="100%" height="100%" alt="" />
+                        </Lazyload>
                     </div>
                     <div className="right">
                         <div className="album-name">
-                            { item.album_name }
+                            {album.name}
+                        </div>
+                        <div className="singer-name">
+                            {album.singer}
+                        </div>
+                        <div className="public-time">
+                            {album.publicTime}
                         </div>
                     </div>
                 </div>
@@ -66,23 +90,27 @@ class Recommend extends Component {
         )
     }
     render() {
+        const { refreshScroll } = this.state;
         return (
             <div className="music-recommend">
-                <div>
-                    <div className="slider-container">
-                        {/* slider -> swiper */}
-                        <div className="swiper-wrapper">
-                            {this.renderSwiperItem()}
+                <Scroll refresh = { refreshScroll } onScroll={forceCheck}>
+                    <div>
+                        <div className="slider-container">
+                            {/* slider -> swiper */}
+                            <div className="swiper-wrapper">
+                                {this.renderSwiperItem()}
+                            </div>
+                            <div className="swiper-pagination"></div>
                         </div>
-                        <div className="swiper-pagination"></div>
-                    </div>
-                    <div className="albun-container">
-                        <h1 className="title">最新专辑</h1>
-                        <div className="album-list">
-                            {this.renderAlbum()}
+                        <div className="album-container">
+                            <h1 className="title">最新专辑</h1>
+                            <div className="album-list">
+                                {this.renderAlbum()}
+                            </div>
                         </div>
                     </div>
-                </div>
+                </Scroll>
+                <Loading title="正在加载中..." show={this.state.show}></Loading>
             </div>
         );
     }
