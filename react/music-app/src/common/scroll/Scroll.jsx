@@ -13,7 +13,7 @@ class Scroll extends Component {
         if (!this.bscroll) {
             this.bscroll = new BScroll(this.refs.scrollView, {
                 probeType: 3,
-                click: this.props.click
+                click: () => {}
             })
             this.bscroll.on('scroll', (e) => {
                 this.props.onScroll(e);

@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import Swiper from 'swiper';
+import Lazyload, { forceCheck } from 'react-lazyload';
+import { Route } from 'react-router-dom';
 import { getCarousel, getNewAlbum } from '../../api/recommend';
 import { CODE_SUCCESS } from '../../api/config';
 import { createAlbumByItem } from '../../model/album';
-import 'swiper/dist/css/swiper.css';
-import './recommend.styl';
 import Scroll from '../../common/scroll/Scroll';
 import Loading from '../../common/loading/Loading';
-import Lazyload, { forceCheck } from 'react-lazyload';
+import Album from '../../containers/Album';
+
+import 'swiper/dist/css/swiper.css';
+import './recommend.styl';
 
 class Recommend extends Component {
     state = {
@@ -37,7 +40,7 @@ class Recommend extends Component {
                 albumList,
                 show: false
             }, () => {
-                // 刷新scroll
+                // 刷新 scroll
                 this.setState({
                     refreshScroll: true
                 })
@@ -45,13 +48,23 @@ class Recommend extends Component {
         })
 
     }
+    handleToAlbumDetail = (url) => {
+        return () => {
+            this.props.history.push({
+                pathname: url
+            })
+        }
+    }
     renderAlbum() {
         const { albumList = [] } = this.state;
+        const { match } = this.props;
         return albumList.map(item => {
             // 渲染 album
             const album = createAlbumByItem(item);
             return (
-                <div className="album-wrapper" key={album.mId}>
+                <div className="album-wrapper" key={album.mId}
+                    onClick={this.handleToAlbumDetail(`${match.url}/${album.mId}`)}
+                >
                     <div className="left">
                         <Lazyload>
                             <img src={album.img} width="100%" height="100%" alt="" />
@@ -91,9 +104,12 @@ class Recommend extends Component {
     }
     render() {
         const { refreshScroll } = this.state;
+        const { match } = this.props;
         return (
             <div className="music-recommend">
-                <Scroll refresh = { refreshScroll } onScroll={forceCheck}>
+                <Scroll refresh={refreshScroll}
+                    onScroll={forceCheck}
+                >
                     <div>
                         <div className="slider-container">
                             {/* slider -> swiper */}
@@ -110,7 +126,8 @@ class Recommend extends Component {
                         </div>
                     </div>
                 </Scroll>
-                <Loading title="正在加载中..." show={this.state.show}></Loading>
+                <Loading title="正在加载中..." show={this.state.show} />
+                <Route path={`${match.url}/:id`} component={Album} />
             </div>
         );
     }

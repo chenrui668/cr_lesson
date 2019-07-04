@@ -1,6 +1,7 @@
 export const URL = {
     carousel: 'https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg',
-    newablum: 'https://u.y.qq.com/cgi-bin/musicu.fcg'
+    newablum: 'https://u.y.qq.com/cgi-bin/musicu.fcg',
+    albumInfo: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_album_info_cp.fcg'
 }
  
 export const PARAM = {
