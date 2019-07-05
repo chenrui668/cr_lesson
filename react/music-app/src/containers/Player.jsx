@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Player from '../components/player/Player';
+import { showplayer } from '../redux/action';
 
 const mapStateToprops = (state) => {
     return {
@@ -8,4 +9,12 @@ const mapStateToprops = (state) => {
     }
 }
 
-export default connect(mapStateToprops)(Player) 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        showMusicPlayer: (status) => {
+            dispatch(showplayer(status));
+        }
+    }
+}
+
+export default connect(mapStateToprops, mapDispatchToProps)(Player) 
