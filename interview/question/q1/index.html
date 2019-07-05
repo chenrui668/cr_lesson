@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- new方法的原理 -->
+    <script>
+        function _new() {
+            let target = {};
+            let [constructor, ...args] = [...arguments];
+            // 所有数据类型都有隐式原型
+            // 只有函数有显式原型
+            target.__proto__ = constructor.prototype; // 执行原型连接(将constructor的显式原型赋给target对象的隐式原型)
+            let result = constructor.apply(target, args); // 执行构造函数， 将函数的属性或者方法添加到创建的空对象上
+            if (result && (typeof(result) === 'object' || typeof(result) === 'function')) {
+                return result;
+            }
+            return target;
+        }
+    </script>
+</body>
+</html>
