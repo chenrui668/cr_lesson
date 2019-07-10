@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 防抖节流-->
+    <div class="debounce">
+        <button id="submit">提交</button>
+        <input type="text" id="input">
+    </div>
+    <script>
+        let val = document.getElementById('input');
+        val.addEventListener('input', debounce(test1, 1000))
+        function test1() {
+            console.log(val.value);
+        }
+        function debounce(fn, time = 500) {
+            // let previous = 0, timer = null
+            // // ；将debounce处理的结果当作函数返回
+            // return function (...args) {
+            //     //获取当前的时间，转化为时间戳
+            //     let now = + new Date()
+            //     // 判断上一次触发的时间和本次触发的时间差是否小于时间间隔
+            //     if (now - previous < time) {
+            //         // 设定一个新的定时器
+            //         // 定时器事件结束后执行fn 
+            //         if (timer) clearTimeout(timer)
+
+            //         timer = setTimeout(() => {
+            //             previous = now
+            //             fn.apply(this, args) //因为要传参，参数的个数不固定  
+            //         }, time)
+
+            //     } else {
+            //         previous = now
+            //         fn.apply(this, args)
+            //     }
+            // }
+            let timeout = 0;
+            return function () {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    fn()
+                }, time)
+            } 
+        }
+        const oDebounce = debounce(test, 1000)
+        let onSubmit = document.getElementById('submit')
+        onSubmit.addEventListener('click', oDebounce)
+        function test() {
+            console.log('提交成功')
+        }
+
+    </script>
+</body>
+
+</html>
