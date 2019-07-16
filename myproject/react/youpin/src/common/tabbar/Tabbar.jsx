@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router,Route, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router,Route, NavLink, Redirect } from 'react-router-dom';
 import './Tabbar.css';
 
 class Tabbar extends Component {
     constructor(props) {
         super(props);
         this.state = {  
-            selectActive: 0,
             routes: [
                 {
-                    route: '/',
+                    route: '/main',
                     title: '首页'
                 },
                 {
@@ -30,23 +29,17 @@ class Tabbar extends Component {
                 }
             ]
         }
-    }
-    changeActive (index) {
-        this.setState({
-            selectActive: index
-        })
-    }   
+    }  
     render() { 
         return (  
             <div className="tabbar">
                 {
                     this.state.routes.map((item, index) => {
                         return (
-                            <div className="link" key={index + item} onClick={this.changeActive.bind(this, index)}>
-                                <Link to={item.route}>
-                                    <div className={this.state.selectActive === index ? `img-box img${index + 1} active${index + 1}` : `img-box img${index + 1}`}></div>
-                                    {item.title}
-                                </Link>
+                            <div className="link" key={index + item}>
+                                <NavLink to={item.route} activeClassName={`active${index + 1}`} className={`img${index + 1}`}>
+                                </NavLink>
+                                {item.title}
                             </div>
                         )
                     })

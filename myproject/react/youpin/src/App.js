@@ -18,11 +18,12 @@ class App extends Component {
     return (  
       <Router>
         <div>
-          <Route exact path="/" component={Main}></Route>
+          <Route path="/main" component={Main}></Route>
           <Route path="/menu" component={Menu}></Route>
           <Route path="/taste" component={Taste}></Route>
           <Route path="/shopCart" component={ShopCart}></Route>
           <Route path="/user" component={User}></Route>
+          <Redirect from="/" to="/main"></Redirect>
           <Tabbar/>
         </div>
       </Router>
