@@ -36,7 +36,7 @@ class Tabbar extends Component {
                 {
                     this.state.routes.map((item, index) => {
                         return (
-                            <div className="link" key={index + item}>
+                            <div className="tabbar-link" key={index + item}>
                                 <NavLink to={item.route} activeClassName={`active${index + 1}`} className={`img${index + 1}`}>
                                 </NavLink>
                                 {item.title}

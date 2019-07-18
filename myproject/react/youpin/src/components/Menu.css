@@ -35,6 +35,9 @@
 .content-box {
     overflow: scroll;
 }
+.content-box::-webkit-scrollbar{
+    display: none;
+}
 .menu-left {
     padding-top: 0.65rem;
     position: relative;

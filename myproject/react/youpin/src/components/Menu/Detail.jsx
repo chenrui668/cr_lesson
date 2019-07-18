@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import MenuGoods from './MenuGoods/MenuGoods';
 import axios from 'axios';
-import './Detail.css'
+import './Detail.css';
+
 class Detail extends Component {
     state = {  
         titleImg: '',
@@ -37,13 +40,16 @@ class Detail extends Component {
                         this.state.detailList.map((item, index) => {
                             return (
                                 <div className="detail-item" key={index + item}>
-                                    <img src={item.pic_url} alt=""/>
+                                    <Link to={`${this.props.match.url}/goods/${this.props.match.params.id}-${index}`}>
+                                        <img src={item.pic_url} alt=""/>
+                                    </Link>
                                     <span>{item.name}</span>
-                                </div>
+                                </div>        
                             )
                         })
                     }
                 </div>
+                <Route path={`${this.props.match.path}/goods/:id`} component={MenuGoods}></Route>
             </div>
         );
     }

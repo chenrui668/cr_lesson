@@ -8,16 +8,16 @@
     border-top: 0.05rem solid #e6e6e6;
     z-index: 11;
 }
-.link {
+.tabbar-link {
     display: inline-block;
     width: 20%;
     height: 100%;
     text-align: center;
     font-size: 0.6rem;
-}
-.link a {
-    text-decoration: none;
     color: #7f6144;
+}
+.tabbar-link a {
+    text-decoration: none;
     display: block;
     width: 1.2rem;
     height: 1.2rem;
@@ -25,33 +25,33 @@
     background-image: url('https://m.youpin.mi.com/app/shop/img?id=shop_712453f2e1e9ce3277118ce3d56bc7a7.png&w=72&h=720');
     background-size: cover;
 }
-.link .img1 {
+.tabbar-link .img1 {
     background-position: 0 0;
 }
-.link .img2 {
+.tabbar-link .img2 {
     background-position: 0 -2.4rem;
 }
-.link .img3 {
+.tabbar-link .img3 {
     background-position: 0 -4.8rem;
 }
-.link .img4 {
+.tabbar-link .img4 {
     background-position: 0 -7.2rem;
 }
-.link .img5 {
+.tabbar-link .img5 {
     background-position: 0 -9.6rem;
 }
-.link .active1 {
+.tabbar-link .active1 {
     background-position: 0 -1.2rem;
 }
-.link .active2 {
+.tabbar-link .active2 {
     background-position: 0 -3.6rem;
 }
-.link .active3 {
+.tabbar-link .active3 {
     background-position: 0 -6rem;
 }
-.link .active4 {
+.tabbar-link .active4 {
     background-position: 0 -8.4rem;
 }
-.link .active5 {
+.tabbar-link .active5 {
     background-position: 0 -10.8rem;
 }
