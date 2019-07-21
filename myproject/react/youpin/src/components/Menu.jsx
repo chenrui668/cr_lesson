@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, NavLink, Redirect } from 'react-router-dom';
-import Detail from './Menu/Detail';
+import Detail from '../container/Detail';
 import './Menu.css'
 class Menu extends Component {
     constructor(props) {

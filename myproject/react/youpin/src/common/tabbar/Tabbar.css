@@ -24,6 +24,7 @@
     margin: 0.1rem auto;
     background-image: url('https://m.youpin.mi.com/app/shop/img?id=shop_712453f2e1e9ce3277118ce3d56bc7a7.png&w=72&h=720');
     background-size: cover;
+    background-repeat: no-repeat;
 }
 .tabbar-link .img1 {
     background-position: 0 0;

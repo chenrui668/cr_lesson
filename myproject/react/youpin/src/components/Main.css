@@ -1,8 +1,12 @@
-.container {
+.menu-container {
     width: 100%;
-    padding-top: 1.9rem;
-    padding-bottom: 2.35rem;
+    margin-top: 1.9rem;
+    margin-bottom: 2.35rem;
     background-color: #f4f4f4;
+    overflow: hidden scroll;
+}
+.menu-container::-webkit-scrollbar{
+    display: none;
 }
 .header {
     position: fixed;
@@ -106,6 +110,8 @@
     padding: 0 0.5rem 0.5rem 0.5rem;
     box-sizing: border-box;
     background-color: #fff;
+    border-radius: 0.25rem;
+    overflow: hidden;
 }
 .menu2-content {
     width: 100%;

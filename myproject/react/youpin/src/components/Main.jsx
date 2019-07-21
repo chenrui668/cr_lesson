@@ -27,7 +27,8 @@ class Main extends Component {
                 title: '随便逛逛',
                 url: 'https://img.youpin.mi-img.com/800_pic/71de23f40af4c2c1d4c3744ad44dddda.png'
             }
-        ]
+        ],
+        containerHeight: 0
     }
     componentDidMount () {
         new Swiper('.swiper-container', {
@@ -38,11 +39,17 @@ class Main extends Component {
               el: '.swiper-pagination',
           }
         });
+        let baseWidth = document.documentElement.clientWidth || document.body.clientWidth;
+        let baseHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        let containerHeight = baseHeight - ((1.9 + 2.3) * (baseWidth / 375 * 20));
+        this.setState({
+            containerHeight
+        })
     }
     render() { 
         return ( 
             <div>
-                <div className="container">
+                <div className="menu-container" style={{ height: `${this.state.containerHeight}px` }}>
                     <div className="header">
                         <div className="header-left">
                             <img src="https://m.youpin.mi.com/youpin/static/m/res/images/navi_title_v4.png" alt=""/>

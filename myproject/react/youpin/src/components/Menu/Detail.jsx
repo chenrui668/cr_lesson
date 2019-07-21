@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
-import MenuGoods from './MenuGoods/MenuGoods';
+import MenuGoods from '../../container/MenuGoods';
 import axios from 'axios';
 import './Detail.css';
 
@@ -19,6 +19,9 @@ class Detail extends Component {
                 detailList: list
             })
         })
+    }
+    changeMenu() {
+        this.props.changeMenuList(this.state.detailList);
     }
     componentWillUnmount() {
         this.setState = () => {
@@ -39,8 +42,8 @@ class Detail extends Component {
                     {
                         this.state.detailList.map((item, index) => {
                             return (
-                                <div className="detail-item" key={index + item}>
-                                    <Link to={`${this.props.match.url}/goods/${this.props.match.params.id}-${index}`}>
+                                <div className="detail-item" key={index + item} onClick={this.changeMenu.bind(this)}>
+                                    <Link to={`${this.props.match.url}/goods/${index}`}>
                                         <img src={item.pic_url} alt=""/>
                                     </Link>
                                     <span>{item.name}</span>
