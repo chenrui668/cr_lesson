@@ -23,7 +23,7 @@ class App extends Component {
           <Route path="/taste" component={Taste}></Route>
           <Route path="/shopCart" component={ShopCart}></Route>
           <Route path="/user" component={User}></Route>
-          <Redirect from="/" to="/main"></Redirect>
+          <Redirect from="/" to="/menu/detail/0/goodsdetail/0-0"></Redirect>
           <Tabbar/>
         </div>
       </Router>

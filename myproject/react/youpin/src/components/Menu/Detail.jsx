@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import MenuGoods from '../../container/MenuGoods';
+import GoodsDetail from './MenuGoods/GoodsDetail/GoodsDetail';
 import axios from 'axios';
 import './Detail.css';
 
@@ -52,7 +53,8 @@ class Detail extends Component {
                         })
                     }
                 </div>
-                <Route path={`${this.props.match.path}/goods/:id`} component={MenuGoods}></Route>
+                <Route path={`${this.props.match.path}/goods/:id`} component={MenuGoods}/>
+                <Route path={`${this.props.match.path}/goodsdetail/:id`} component={GoodsDetail}/>
             </div>
         );
     }

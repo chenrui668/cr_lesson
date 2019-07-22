@@ -72,6 +72,9 @@
     box-sizing: border-box;
     padding: 0.25rem 0.2rem;
 }
+.goods-box a {
+    text-decoration: none;
+}
 .goods-item {
     height: 100%;
     width: 100%;
@@ -150,6 +153,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 2rem;
 }
 .menu-foot span {
     font-size: 0.6rem;

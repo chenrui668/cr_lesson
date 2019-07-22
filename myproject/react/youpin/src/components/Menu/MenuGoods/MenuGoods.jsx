@@ -42,6 +42,7 @@ class MenuGoods extends Component {
     }
     render() {
         let list = this.state.goodsList[this.state.goodsIndex];
+        console.log(this.props)
         return (
             <div className="goods-page" style={{ height: `${this.state.baseHeight}px` }}>
                 <div className="goods-head">
@@ -71,26 +72,28 @@ class MenuGoods extends Component {
                                     list.map((item, index) => {
                                         return (
                                             <div className="goods-box" key={index + item}>
-                                                <div className="goods-item">
-                                                    <div className="goods-item_img">
-                                                        <img src={item.img} alt="" />
-                                                        {
-                                                            item.colorNum <= 1 ? '' : <span className="goods-item_icon1">{item.colorNum}色可选</span>
-                                                        }
-                                                        {
-                                                            item.isLowPrice ? <span className="goods-item_icon2">特价</span> : ''
-                                                        }
+                                                <Link to={`/menu/detail/${this.state.menuIndex}/goodsdetail/${this.state.goodsIndex}-${index}`}>
+                                                    <div className="goods-item">
+                                                        <div className="goods-item_img">
+                                                            <img src={item.img} alt="" />
+                                                            {
+                                                                item.colorNum <= 1 ? '' : <span className="goods-item_icon1">{item.colorNum}色可选</span>
+                                                            }
+                                                            {
+                                                                item.isLowPrice ? <span className="goods-item_icon2">特价</span> : ''
+                                                            }
+                                                        </div>
+                                                        <div className="goods-item_name">
+                                                            <span>{item.name}</span>
+                                                        </div>
+                                                        <div className="goods-item_summary">
+                                                            <span>{item.summary}</span>
+                                                        </div>
+                                                        <div className="goods-item_price">
+                                                            ￥<span>{item.price}</span>
+                                                        </div>
                                                     </div>
-                                                    <div className="goods-item_name">
-                                                        <span>{item.name}</span>
-                                                    </div>
-                                                    <div className="goods-item_summary">
-                                                        <span>{item.summary}</span>
-                                                    </div>
-                                                    <div className="goods-item_price">
-                                                        ￥<span>{item.price}</span>
-                                                    </div>
-                                                </div>
+                                                </Link>
                                             </div>
                                         )
                                     })
