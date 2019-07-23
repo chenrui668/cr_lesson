@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import BScroll from 'better-scroll';
 import './GoodsDetail.css';
 import Swiper from 'swiper/dist/js/swiper.js';
 import 'swiper/dist/css/swiper.min.css';
@@ -22,7 +23,9 @@ class GoodsDetail extends Component {
         ],
         titleIndex: 0,
         swiperIndex: 0,
-        preUrl: ''
+        preUrl: '',
+        titleOpacity: 0,
+        changeIcon: false
     }
     componentDidMount() {
         let baseHeight = document.documentElement.clientHeight || document.body.clientHeight;
@@ -45,78 +48,142 @@ class GoodsDetail extends Component {
                 el: '.swiper-pagination',
                 type: 'fraction',
                 renderFraction: function (currentClass, totalClass) {
-                  return '<span class="' + currentClass + '"></span>' +
-                         '/' +
-                         '<span class="' + totalClass + '"></span>';
+                    return '<span class="' + currentClass + '"></span>' +
+                        '/' +
+                        '<span class="' + totalClass + '"></span>';
                 },
             },
             autoplay: {
                 disableOnInteraction: false
             }
         });
+        this.scroll = new BScroll('.goods-detail', {
+            click: true,
+            scrollY: true,
+            bounce: false
+        })
+        this.scroll.on('scroll', () => {
+            console.log(this.scroll.y);
+        })
     }
     changeIndex(index) {
         this.setState({
             titleIndex: index
         })
     }
+    scrollEvent() {
+        let changeHeight = this.refs.swiperBox.offsetHeight - this.refs.titleBox.offsetHeight;
+        if (- this.scroll.y < changeHeight) {
+            var titleOpacity = Math.round(parseFloat(- this.scroll.y / changeHeight) * 100) / 100;
+            var changeIcon = false;
+        } else {
+            titleOpacity = 1;
+            changeIcon = true;
+        }
+        this.setState({
+            titleOpacity,
+            changeIcon
+        })
+    }
     render() {
         return (
-            <div>
-                <div className="goods-detail" style={{ height: `${this.state.baseHeight}px` }}>
-                    <div className="goods-detail_header" style={{opacity: '0'}}>
-                        <div className="detail-header_title">
-                            {
-                                this.state.titleList.map((item, index) => {
-                                    return (
-                                        <div className={this.state.titleIndex === index ? 'title-item_box item-active' : 'title-item_box'} key={index + item} onClick={this.changeIndex.bind(this, index)}>
-                                            <span>{item}</span>
-                                        </div>
-                                    )
-                                })
-                            }
-                            <div className="scroll-line_box" style={{transform: `translateX(${this.state.titleIndex * 100}%)`, transition: 'transform 0.2s'}}>
-                                <div className="scroll-line"></div>
+            <div style={{ width: '100%' }}>
+                <div className="goods-detail_header" style={{ opacity: `${this.state.titleOpacity}` }} ref='titleBox'>
+                    <div className="detail-header_title">
+                        {
+                            this.state.titleList.map((item, index) => {
+                                return (
+                                    <div className={this.state.titleIndex === index ? 'title-item_box item-active' : 'title-item_box'} key={index + item} onClick={this.changeIndex.bind(this, index)}>
+                                        <span>{item}</span>
+                                    </div>
+                                )
+                            })
+                        }
+                        <div className="scroll-line_box" style={{ transform: `translateX(${this.state.titleIndex * 100}%)`, transition: 'transform 0.2s' }}>
+                            <div className="scroll-line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div className="detail-header_icon1">
+                    <Link to={this.state.preUrl}>
+                        {
+                            this.state.changeIcon ? <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/std_tittlebar_main_device_back_normal.png" alt="" />
+                            : <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/std_titlebar_detailBackNormal.png" alt="" />
+                        }
+                    </Link>
+                </div>
+                <div className="detail-header_icon2">
+                    {
+                        this.state.changeIcon ? <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/detail_nav_icon_more.png"/>
+                        : <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/detail_nav_icon_more_transparent.png" alt="" />
+                    }
+                    </div>
+                <div className="goods-detail" style={{ height: `${this.state.baseHeight}px` }} onTouchMove={this.scrollEvent.bind(this)}>
+                    <div style={{ width: '100%' }}>
+                        <div className="swiper-container" ref='swiperBox' style={{height: '18.75rem'}}>
+                            <div className="swiper-wrapper">
+                                {
+                                    this.state.swiperImg.map((item, index) => {
+                                        return (
+                                            <div className="swiper-slide" key={index + item}>
+                                                <img src={item} alt="" />
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                            <div className="swiper-pagination"
+                                style={{
+                                    color: '#fff',
+                                    padding: '0 0.3rem',
+                                    fontSize: '0.5rem',
+                                    height: '1rem',
+                                    width: 'auto',
+                                    lineHeight: '1rem',
+                                    backgroundColor: 'rgba(102, 102, 102, 0.4)',
+                                    borderRadius: '1rem',
+                                    bottom: '0.7rem',
+                                    left: '16.7rem'
+                                }}
+                            ></div>
+                        </div>
+                        <div className="goods-info">
+                            <div className="goods-info_price">
+                                ￥<span>299</span>
+                            </div>
+                            <div className="goods-info_name">
+                                <span>小米AI音箱</span>
+                            </div>
+                            <div className="goods-info_summary">
+                                <span>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</span>
+                            </div>
+                            <div className="youpin-img">
+                                <img src="https://img.youpin.mi-img.com/editor1/ce497b9d0341ac785d77e343dddab7e7.png?w=1080&h=111" alt=""/>
                             </div>
                         </div>
-                    </div>
-                    <Link to={this.state.preUrl}>
-                        <div className="detail-header_icon1">
-                            <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/std_titlebar_detailBackNormal.png" alt="" />
+                        <div className="goods-choose">
+                            <div className="goods-choose_box">
+                                <span className="goods-choose_title">已选</span>
+                                <div className="goods-choose_text goods-choose_text1">请选择型号</div>
+                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/device_shop_right_arrow.png" alt=""/>
+                            </div>
+                            <div className="goods-choose_box">
+                                <span className="goods-choose_title">送至</span>
+                                <div className="goods-choose_text goods-choose_text2">北京市 海淀区</div>
+                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/device_shop_right_arrow.png" alt=""/>
+                            </div>
+                            <div className="goods-choose_box">
+                                <span className="goods-choose_title">服务</span>
+                                <div className="goods-choose_text goods-choose_text3">
+                                    <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/detail_icon_service_v2.png" alt=""/>
+                                    <span>满99包邮</span>
+                                </div>
+                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/device_shop_right_arrow.png" alt=""/>
+                            </div>
                         </div>
-                        {/* <div className="detail-header_icon1">
-                            <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/std_tittlebar_main_device_back_normal.png" alt="" />
-                        </div> */}
-                    </Link>
-                    <div className="detail-header_icon2">
-                        <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/detail_nav_icon_more_transparent.png" alt="" />
-                    </div>
-                    <div className="swiper-container">
-                        <div className="swiper-wrapper">
-                            {
-                                this.state.swiperImg.map((item, index) => {
-                                    return (
-                                        <div className="swiper-slide" key={index + item}>
-                                            <img src={item} alt="" />
-                                        </div>
-                                    )
-                                })
-                            }
+                        <div style={{ width: '100%', height: '2000px' }}>
+
                         </div>
-                        <div className="swiper-pagination" 
-                            style={{
-                                color: '#fff', 
-                                padding: '0 0.3rem', 
-                                fontSize: '0.5rem', 
-                                height: '1rem', 
-                                width: 'auto', 
-                                lineHeight: '1rem', 
-                                backgroundColor: 'rgba(102, 102, 102, 0.4)',
-                                borderRadius: '1rem',
-                                bottom: '1rem',
-                                left: '16.7rem'
-                            }}
-                        ></div>
                     </div>
                 </div>
             </div>

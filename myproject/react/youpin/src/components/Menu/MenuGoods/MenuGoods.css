@@ -1,6 +1,6 @@
 .goods-page {
     position: fixed;
-    top: 2.25rem;
+    top: 0;
     left: 0;
     width: 100%;
     z-index: 30;
@@ -59,7 +59,7 @@
     color: rgb(132, 95, 63);
 }
 .goods-content {
-    margin-top: 2.65rem;
+    margin-top: 4.9rem;
     box-sizing: border-box;
     width: 100%;
     padding: 0 0.35rem;
@@ -153,7 +153,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 2rem;
 }
 .menu-foot span {
     font-size: 0.6rem;
