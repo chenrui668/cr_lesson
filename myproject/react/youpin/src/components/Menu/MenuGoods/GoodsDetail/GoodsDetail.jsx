@@ -60,7 +60,8 @@ class GoodsDetail extends Component {
         this.scroll = new BScroll('.goods-detail', {
             click: true,
             scrollY: true,
-            bounce: false
+            bounce: false,
+            eventPassthrough: 'horizontal'
         })
         this.scroll.on('scroll', () => {
             console.log(this.scroll.y);
@@ -179,6 +180,127 @@ class GoodsDetail extends Component {
                                     <span>满99包邮</span>
                                 </div>
                                 <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/device_shop_right_arrow.png" alt=""/>
+                            </div>
+                        </div>
+                        <div className="goods-comments">
+                            <div className="goods-comments_head">
+                                <div className="goods-comments_num">
+                                    <span>用户评价(33333)</span>
+                                </div>
+                                <div className="goods-comments_sat">
+                                    <span>98%满意</span>
+                                    <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/device_shop_right_arrow.png" alt=""/>
+                                </div>
+                            </div>
+                            <div className="goods-comments_label">
+                                <span>有图(1969)</span>
+                                <span>有图(1969)</span>
+                                <span>有图(1969)</span>
+                                <span>有图(1969)</span>
+                            </div>
+                            <div className="goods-comments_content">
+                                <div className="goods-comments_list">
+                                    <div className="goods-comments_item">
+                                        <div className="comments-user">
+                                            <div className="comments-user_img">
+                                                <img src="https://s1.mi-img.com/mfsv2/avatar/fdsc3/p01f5vOrbGyf/pAJV33EhQzv7l8.jpg" alt=""/>
+                                            </div>
+                                            <div className="comments-user_name">
+                                                <span>武*帝</span>
+                                            </div>
+                                            <div className="comments-user_rank">
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                            </div>
+                                        </div>
+                                        <div className="comments-text">
+                                            东西价廉物美，智能化控制，手机App和小爱同学都可以，适合懒汉。自从朋友推荐之后，现在有点中毒了，家里小米的东东越来越多
+                                        </div>
+                                    </div>
+                                    <div className="goods-comments_item">
+                                        <div className="comments-user">
+                                            <div className="comments-user_img">
+                                                <img src="https://s1.mi-img.com/mfsv2/avatar/fdsc3/p01f5vOrbGyf/pAJV33EhQzv7l8.jpg" alt=""/>
+                                            </div>
+                                            <div className="comments-user_name">
+                                                <span>武*帝</span>
+                                            </div>
+                                            <div className="comments-user_rank">
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                            </div>
+                                        </div>
+                                        <div className="comments-text">
+                                            东西价廉物美，智能化控制，手机App和小爱同学都可以，适合懒汉。自从朋友推荐之后，现在有点中毒了，家里小米的东东越来越多
+                                        </div>
+                                    </div>
+                                    <div className="goods-comments_item">
+                                        <div className="comments-user">
+                                            <div className="comments-user_img">
+                                                <img src="https://s1.mi-img.com/mfsv2/avatar/fdsc3/p01f5vOrbGyf/pAJV33EhQzv7l8.jpg" alt=""/>
+                                            </div>
+                                            <div className="comments-user_name">
+                                                <span>武*帝</span>
+                                            </div>
+                                            <div className="comments-user_rank">
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                            </div>
+                                        </div>
+                                        <div className="comments-text">
+                                            东西价廉物美，智能化控制，手机App和小爱同学都可以，适合懒汉。自从朋友推荐之后，现在有点中毒了，家里小米的东东越来越多
+                                        </div>
+                                    </div>
+                                    <div className="goods-comments_item">
+                                        <div className="comments-user">
+                                            <div className="comments-user_img">
+                                                <img src="https://s1.mi-img.com/mfsv2/avatar/fdsc3/p01f5vOrbGyf/pAJV33EhQzv7l8.jpg" alt=""/>
+                                            </div>
+                                            <div className="comments-user_name">
+                                                <span>武*帝</span>
+                                            </div>
+                                            <div className="comments-user_rank">
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                            </div>
+                                        </div>
+                                        <div className="comments-text">
+                                            东西价廉物美，智能化控制，手机App和小爱同学都可以，适合懒汉。自从朋友推荐之后，现在有点中毒了，家里小米的东东越来越多
+                                        </div>
+                                    </div>
+                                    <div className="goods-comments_item">
+                                        <div className="comments-user">
+                                            <div className="comments-user_img">
+                                                <img src="https://s1.mi-img.com/mfsv2/avatar/fdsc3/p01f5vOrbGyf/pAJV33EhQzv7l8.jpg" alt=""/>
+                                            </div>
+                                            <div className="comments-user_name">
+                                                <span>武*帝</span>
+                                            </div>
+                                            <div className="comments-user_rank">
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
+                                            </div>
+                                        </div>
+                                        <div className="comments-text">
+                                            东西价廉物美，智能化控制，手机App和小爱同学都可以，适合懒汉。自从朋友推荐之后，现在有点中毒了，家里小米的东东越来越多
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div style={{ width: '100%', height: '2000px' }}>
