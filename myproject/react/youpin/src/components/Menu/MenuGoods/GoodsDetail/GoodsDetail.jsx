@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import BScroll from 'better-scroll';
 import './GoodsDetail.css';
 import Swiper from 'swiper/dist/js/swiper.js';
@@ -22,10 +22,28 @@ class GoodsDetail extends Component {
             '推荐'
         ],
         titleIndex: 0,
-        swiperIndex: 0,
         preUrl: '',
         titleOpacity: 0,
-        changeIcon: false
+        changeIcon: false,
+        detailsImg: [   
+            'https://shop.io.mi-img.com/app/shop/img?id=shop_3ab2f9cfb47e955d53a78e50a7636e34.jpeg&w=720&h=1192',
+            'https://shop.io.mi-img.com/app/shop/img?id=shop_39f31c9ecbcfd97a7aa610eeaad30292.jpeg&w=720&h=551',
+            'https://shop.io.mi-img.com/app/shop/img?id=shop_244704e76087962dbf68bc391d300441.jpeg&w=720&h=763',
+            'https://shop.io.mi-img.com/app/shop/img?id=shop_7e11644042c617669cb7717fc82a276f.jpeg&w=720&h=549',
+            'https://shop.io.mi-img.com/app/shop/img?id=shop_8e740f087f2ab43e14f3807a13883b8d.jpeg&w=720&h=767',
+            'https://shop.io.mi-img.com/app/shop/img?id=shop_730e4d8c6e2bd42af75295253a63e092.jpeg&w=720&h=552',
+            'https://shop.io.mi-img.com/app/shop/img?id=shop_d6d591be8bfb25f2c1bc7676c787f2ba.jpeg&w=720&h=756',
+            'https://shop.io.mi-img.com/app/shop/img?id=shop_045a0b75a478b0157d2ac4b82cc166a9.jpeg&w=720&h=555',
+            'https://shop.io.mi-img.com/app/shop/img?id=shop_b7f7cb6756c718569f601a0d77070be0.jpeg&w=720&h=763',
+            'https://shop.io.mi-img.com/app/shop/img?id=shop_adc6ac9dee8089f3ef422193cbbc46dc.jpeg&w=720&h=1587',
+            'https://shop.io.mi-img.com/app/shop/img?id=shop_fa261f9bf6d67b2f5d4bf946793fe87a.jpeg&w=720&h=423',
+            'https://shop.io.mi-img.com/app/shop/img?id=shop_0a39c0d0e3cea978cede48de5e0e9ee1.jpeg&w=720&h=554',
+            'https://shop.io.mi-img.com/app/shop/img?id=shop_7e125e5cc37bcb2e8ac0034244d97656.jpeg&w=716&h=679',
+            'https://shop.io.mi-img.com/app/shop/img?id=shop_88b44e395fb1b74a0ab07452e4ed56de.jpeg&w=720&h=551',
+            'https://shop.io.mi-img.com/app/shop/img?id=shop_329084d60823460fadc2722896b50cb6.jpeg&w=720&h=1219',
+            'https://shop.io.mi-img.com/app/shop/img?id=shop_e452c83ff8bdcbc5f053ac10aafab823.jpeg&w=720&h=769' 
+        ],
+        scrollHeight: []
     }
     componentDidMount() {
         let baseHeight = document.documentElement.clientHeight || document.body.clientHeight;
@@ -33,11 +51,17 @@ class GoodsDetail extends Component {
         let a = url.split('/');
         let a2 = a.slice(0, 4);
         let a3 = a2.join('/');
-        let b = a[a.length - 1].split('-')
-        let preUrl = `${a3}/goods/${b[0]}`
+        let b = a[a.length - 1].split('-');
+        let preUrl = `${a3}/goods/${b[0]}`;
+        let scrollHeight = [0];
+        for ( let i = 1; i < 4; i ++) {
+            let height = this.refs[`scrollBox${i}`].offsetTop - this.refs.titleBox.offsetHeight;
+            scrollHeight.push(height);
+        }
         this.setState({
             baseHeight,
-            preUrl
+            preUrl,
+            scrollHeight
         })
         new Swiper('.swiper-container', {
             autoplay: true,
@@ -59,32 +83,38 @@ class GoodsDetail extends Component {
         });
         this.scroll = new BScroll('.goods-detail', {
             click: true,
+            probeType: 3,
             scrollY: true,
             bounce: false,
             eventPassthrough: 'horizontal'
-        })
-        this.scroll.on('scroll', () => {
-            console.log(this.scroll.y);
+        });
+        this.scroll.on('scroll', (e) => {
+            let changeHeight = this.refs.swiperBox.offsetHeight - this.refs.titleBox.offsetHeight;
+            if (- e.y < changeHeight) {
+                var titleOpacity = Math.round(parseFloat(- e.y / changeHeight) * 100) / 100;
+                var changeIcon = false;
+            } else {
+                titleOpacity = 1;
+                changeIcon = true;
+            }
+            const scrollH = this.state.scrollHeight;
+            let index = 0;
+            for (let i = 0; i < scrollH.length; i ++) {
+                if (- e.y >= scrollH[i] && (- e.y < scrollH[i + 1] || scrollH[i + 1] === undefined)) {
+                    index = i
+                }
+            }
+            this.setState({
+                titleOpacity,
+                changeIcon,
+                titleIndex: index
+            })
         })
     }
     changeIndex(index) {
-        this.setState({
-            titleIndex: index
-        })
-    }
-    scrollEvent() {
-        let changeHeight = this.refs.swiperBox.offsetHeight - this.refs.titleBox.offsetHeight;
-        if (- this.scroll.y < changeHeight) {
-            var titleOpacity = Math.round(parseFloat(- this.scroll.y / changeHeight) * 100) / 100;
-            var changeIcon = false;
-        } else {
-            titleOpacity = 1;
-            changeIcon = true;
+        if (index !== this.state.titleIndex) {
+            this.scroll.scrollTo(0, - this.state.scrollHeight[index], 700)
         }
-        this.setState({
-            titleOpacity,
-            changeIcon
-        })
     }
     render() {
         return (
@@ -119,8 +149,9 @@ class GoodsDetail extends Component {
                         : <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/detail_nav_icon_more_transparent.png" alt="" />
                     }
                     </div>
-                <div className="goods-detail" style={{ height: `${this.state.baseHeight}px` }} onTouchMove={this.scrollEvent.bind(this)}>
+                <div className="goods-detail" style={{ height: `${this.state.baseHeight}px` }}>
                     <div style={{ width: '100%' }}>
+                        <div ref="scrollBox0">
                         <div className="swiper-container" ref='swiperBox' style={{height: '18.75rem'}}>
                             <div className="swiper-wrapper">
                                 {
@@ -182,7 +213,8 @@ class GoodsDetail extends Component {
                                 <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/device_shop_right_arrow.png" alt=""/>
                             </div>
                         </div>
-                        <div className="goods-comments">
+                        </div>
+                        <div className="goods-comments" ref="scrollBox1">
                             <div className="goods-comments_head">
                                 <div className="goods-comments_num">
                                     <span>用户评价(33333)</span>
@@ -240,71 +272,31 @@ class GoodsDetail extends Component {
                                             东西价廉物美，智能化控制，手机App和小爱同学都可以，适合懒汉。自从朋友推荐之后，现在有点中毒了，家里小米的东东越来越多
                                         </div>
                                     </div>
-                                    <div className="goods-comments_item">
-                                        <div className="comments-user">
-                                            <div className="comments-user_img">
-                                                <img src="https://s1.mi-img.com/mfsv2/avatar/fdsc3/p01f5vOrbGyf/pAJV33EhQzv7l8.jpg" alt=""/>
-                                            </div>
-                                            <div className="comments-user_name">
-                                                <span>武*帝</span>
-                                            </div>
-                                            <div className="comments-user_rank">
-                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
-                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
-                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
-                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
-                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
-                                            </div>
-                                        </div>
-                                        <div className="comments-text">
-                                            东西价廉物美，智能化控制，手机App和小爱同学都可以，适合懒汉。自从朋友推荐之后，现在有点中毒了，家里小米的东东越来越多
-                                        </div>
-                                    </div>
-                                    <div className="goods-comments_item">
-                                        <div className="comments-user">
-                                            <div className="comments-user_img">
-                                                <img src="https://s1.mi-img.com/mfsv2/avatar/fdsc3/p01f5vOrbGyf/pAJV33EhQzv7l8.jpg" alt=""/>
-                                            </div>
-                                            <div className="comments-user_name">
-                                                <span>武*帝</span>
-                                            </div>
-                                            <div className="comments-user_rank">
-                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
-                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
-                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
-                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
-                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
-                                            </div>
-                                        </div>
-                                        <div className="comments-text">
-                                            东西价廉物美，智能化控制，手机App和小爱同学都可以，适合懒汉。自从朋友推荐之后，现在有点中毒了，家里小米的东东越来越多
-                                        </div>
-                                    </div>
-                                    <div className="goods-comments_item">
-                                        <div className="comments-user">
-                                            <div className="comments-user_img">
-                                                <img src="https://s1.mi-img.com/mfsv2/avatar/fdsc3/p01f5vOrbGyf/pAJV33EhQzv7l8.jpg" alt=""/>
-                                            </div>
-                                            <div className="comments-user_name">
-                                                <span>武*帝</span>
-                                            </div>
-                                            <div className="comments-user_rank">
-                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
-                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
-                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
-                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
-                                                <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/evaluation_btn_level.a_sel_light.png" alt=""/>
-                                            </div>
-                                        </div>
-                                        <div className="comments-text">
-                                            东西价廉物美，智能化控制，手机App和小爱同学都可以，适合懒汉。自从朋友推荐之后，现在有点中毒了，家里小米的东东越来越多
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div className="goods-details" ref="scrollBox2">
+                            <div className="goods-details_title">
+                                <span>概述</span>
+                            </div>
+                            <div className="goods-details_img">
+                                {
+                                    this.state.detailsImg.map((item, index) => {
+                                        return (
+                                            <img src={item} alt="" key={index + item}/>
+                                        )
+                                    })
+                                }
+                                <img src="https://img.youpin.mi-img.com/editor1/34d9309abc25227d26891dddcdf946d0.png@base@tag=imgScale&F=webp" alt=""/>
+                            </div>
+                        </div>
+                        <div className="goods-recommend" ref="scrollBox3">
+                            <div className="goods-recommend_title">
+                                <span>为您推荐</span>
+                            </div>
+                        </div>
                         <div style={{ width: '100%', height: '2000px' }}>
-
+                            
                         </div>
                     </div>
                 </div>

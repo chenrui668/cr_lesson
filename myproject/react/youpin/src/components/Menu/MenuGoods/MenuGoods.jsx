@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import GoodsItem from '../../../common/goodsItem/GoodsItem';
 import './MenuGoods.css';
 
 
@@ -42,7 +43,6 @@ class MenuGoods extends Component {
     }
     render() {
         let list = this.state.goodsList[this.state.goodsIndex];
-        console.log(this.props)
         return (
             <div className="goods-page" style={{ height: `${this.state.baseHeight}px` }}>
                 <div className="goods-head">
@@ -73,26 +73,14 @@ class MenuGoods extends Component {
                                         return (
                                             <div className="goods-box" key={index + item}>
                                                 <Link to={`/menu/detail/${this.state.menuIndex}/goodsdetail/${this.state.goodsIndex}-${index}`}>
-                                                    <div className="goods-item">
-                                                        <div className="goods-item_img">
-                                                            <img src={item.img} alt="" />
-                                                            {
-                                                                item.colorNum <= 1 ? '' : <span className="goods-item_icon1">{item.colorNum}色可选</span>
-                                                            }
-                                                            {
-                                                                item.isLowPrice ? <span className="goods-item_icon2">特价</span> : ''
-                                                            }
-                                                        </div>
-                                                        <div className="goods-item_name">
-                                                            <span>{item.name}</span>
-                                                        </div>
-                                                        <div className="goods-item_summary">
-                                                            <span>{item.summary}</span>
-                                                        </div>
-                                                        <div className="goods-item_price">
-                                                            ￥<span>{item.price}</span>
-                                                        </div>
-                                                    </div>
+                                                    <GoodsItem 
+                                                        img = {item.img}
+                                                        colorNum = {item.colorNum}
+                                                        isLowPrice = {item.isLowPrice}
+                                                        name = {item.name}
+                                                        summary = {item.summary}
+                                                        price = {item.price}
+                                                    />
                                                 </Link>
                                             </div>
                                         )

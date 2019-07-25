@@ -120,7 +120,7 @@
 }
 .goods-choose {
     width: 100%;
-    margin-top: 0.5rem;
+    margin: 0.5rem 0 0;
 }
 .goods-choose_box {
     width: 100%;
@@ -165,9 +165,9 @@
 }
 .goods-comments {
     width: 100%;
-    margin-top: 0.5rem;
     padding: 0.8rem 0;
     background-color: #fff;
+    margin-bottom: 0.5rem;
 }
 .goods-comments_head {
     width: 100%;
@@ -266,4 +266,35 @@
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+}
+.goods-details {
+    width: 100%
+}
+.goods-details_title {
+    width: 100%;
+    height: 2rem;
+    background-color: #fff;
+    font-size: 0.6rem;
+    line-height: 2rem;
+    text-align: center;
+    color: #9f8257;
+}
+.goods-details_img {
+    width: 100%;
+    
+}
+.goods-details_img img {
+    width: 100%;
+    display: block;
+}
+.goods-recommend {
+    width: 100%;
+}
+.goods-recommend_title {
+    width: 100%;
+    height: 2.3rem;
+    text-align: center;
+    line-height: 2.3rem;
+    font-size: 0.75rem;
+    background-color: #fff;
 }
