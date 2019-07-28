@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import MenuGoods from '../../container/MenuGoods';
-import GoodsDetail from './MenuGoods/GoodsDetail/GoodsDetail';
+import GoodsDetail from '../../container/GoodsDetail';
 import axios from 'axios';
 import './Detail.css';
 

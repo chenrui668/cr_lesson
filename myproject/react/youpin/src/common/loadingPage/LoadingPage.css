@@ -1,0 +1,13 @@
+.bg-content {
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 30;
+}
+.bg-content img {
+    margin-top: 50%;
+    width: 10rem;
+}

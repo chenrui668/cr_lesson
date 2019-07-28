@@ -1,5 +1,6 @@
 const defaultState = {
-    MenuList: []
+    MenuList: [],
+    recommendList: []
 }
 
 export default (state = defaultState, action) => {
@@ -8,6 +9,10 @@ export default (state = defaultState, action) => {
             let newState = JSON.parse(JSON.stringify(state));
             newState.MenuList = action.value;
             return newState;
+        case 'addRecommendList': 
+            let newState1 = JSON.parse(JSON.stringify(state));
+            newState1.recommendList = action.value;
+            return newState1;
         default: 
             return state;
     }

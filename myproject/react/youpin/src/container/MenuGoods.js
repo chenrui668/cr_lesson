@@ -7,10 +7,15 @@ const mapStateToprops = (state) => {
     }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-        
-//     }
-// }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addRecommendList: (list) => {
+            dispatch({
+                type: 'addRecommendList',
+                value: list
+            });
+        }
+    }
+}
 
-export default connect(mapStateToprops, null)(MenuGoods); 
+export default connect(mapStateToprops, mapDispatchToProps)(MenuGoods); 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import GoodsItem from '../../../common/goodsItem/GoodsItem';
+import LoadingPage from '../../../common/loadingPage/LoadingPage';
 import './MenuGoods.css';
 
 
@@ -41,6 +42,17 @@ class MenuGoods extends Component {
             goodsIndex: index
         })
     }
+    getRecommendGoods(index) {
+        let list = this.state.goodsList[this.state.goodsIndex];
+        let recommendList = [];
+        while(recommendList.length < 16) {
+            let a = Math.floor(Math.random() * list.length)
+            if ( index !== a ) {
+                recommendList.push(list[a]);
+            }
+        } 
+        this.props.addRecommendList(recommendList);
+    }
     render() {
         let list = this.state.goodsList[this.state.goodsIndex];
         return (
@@ -71,8 +83,8 @@ class MenuGoods extends Component {
                                 {
                                     list.map((item, index) => {
                                         return (
-                                            <div className="goods-box" key={index + item}>
-                                                <Link to={`/menu/detail/${this.state.menuIndex}/goodsdetail/${this.state.goodsIndex}-${index}`}>
+                                            <div className="goods-box" key={index + item} onClick={this.getRecommendGoods.bind(this, index)}>
+                                                <Link to={`/menu/detail/${this.state.menuIndex}/goodsdetail/${this.state.menuIndex}-${this.state.goodsIndex}-${index}`}>
                                                     <GoodsItem 
                                                         img = {item.img}
                                                         colorNum = {item.colorNum}
@@ -93,9 +105,7 @@ class MenuGoods extends Component {
                                 <div className="line"></div>
                             </div>
                         </div> :
-                        <div className="bg-content">
-                            <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/loading_v2.png" alt="" />
-                        </div>
+                        <LoadingPage />
                 }
             </div>
         );

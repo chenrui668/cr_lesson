@@ -5,9 +5,13 @@ import App from './App'
 import router from './router'
 import mandMobile from 'mand-mobile'
 import 'mand-mobile/lib/mand-mobile.css'
-Vue.use(mandMobile)
+// 请求拦截器
+import requestPlugin from './request/http.js'
 
-Vue.config.productionTip = false
+Vue.use(mandMobile)
+Vue.use(requestPlugin)
+
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
