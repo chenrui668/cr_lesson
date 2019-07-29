@@ -1,0 +1,131 @@
+.goods-choose_detail {
+    width: 100%;
+}
+.choose-detail_bg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 55;
+    background-color: rgb(0, 0, 0);
+    display: none;
+    transform: translateY(100%);
+    opacity: 0;
+}
+.choose-detail_showBg {
+    display: block;
+    animation: showBg 0.6s linear forwards;
+}
+@keyframes showBg {
+    50% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+}
+.choose-detail_content {
+    width: 100%;
+    height: 25.3rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 57;
+    background-color: #fff;
+    border-radius: 0.25rem 0.25rem 0 0;
+    overflow: hidden;
+    display: none;
+    transform: translateY(100%);
+}
+.choose-detail_showContent {
+    display: block;
+    animation: showContent 0.3s linear forwards;
+}
+@keyframes showContent {
+    0% {
+        transform: translateY(100%);
+    }
+    50% {
+        transform: translateY(50%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+.choose-detail_header {
+    height: 5.8rem;
+    width: 100%;
+    padding: 0.7rem;
+    box-sizing: border-box;
+    border-bottom: 0.05rem solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.choose-detail_header .img {
+    height: 4.35rem;
+    width: 4.35rem;
+    background-color: rgb(248, 248, 248);
+    border-radius: 0.2rem;
+    margin-right: 0.5rem;
+}
+.choose-header_close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 2.15rem;
+    width: 2.15rem;
+    text-align: center;
+    line-height: 2.15rem;
+}
+.choose-header_close img {
+    height: 0.55rem;
+    width: 0.55rem;
+    vertical-align: middle;
+}
+.choose-info_price {
+    font-size: 0.6rem;
+    color: rgb(182, 9, 9);
+}
+.choose-info_price span {
+    font-size: 1rem;
+    font-weight: bold;
+}
+.choose-info_num {
+    font-size: 0.65rem;
+    color: rgb(102, 102, 102);
+    margin-top: 0.4rem;
+}
+.choose-detail_container {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.2rem 0.7rem;
+}
+.choose-container_num {
+    font-size: 0.65rem;
+    color: rgb(153, 153, 153);
+}
+.choose-num_btn {
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+.choose-num_btn img {
+    width: 2.5rem;
+    height: 1.5rem;
+}
+.choose-num_btn .choose-num {
+    width: 2.5rem;
+    height: 1.5rem;
+    text-align: center;
+    line-height: 1.5rem;
+    color: rgb(51, 51, 51);
+    font-size: 0.7rem;
+    font-weight: bold;
+    border-radius: 0.2rem;
+    background-color: rgb(244, 244, 244);
+}

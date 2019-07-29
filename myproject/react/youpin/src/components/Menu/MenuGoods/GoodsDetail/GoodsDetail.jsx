@@ -4,7 +4,8 @@ import BScroll from 'better-scroll';
 import axios from 'axios';
 import './GoodsDetail.css';
 import LoadingPage from '../../../../common/loadingPage/LoadingPage';
-import GoodsItem from'../../../../common/goodsItem/GoodsItem';
+import GoodsItem from '../../../../common/goodsItem/GoodsItem';
+import ChooseDetail from './ChooseDetail/ChooseDetail';
 import Swiper from 'swiper/dist/js/swiper.js';
 import 'swiper/dist/css/swiper.min.css';
 class GoodsDetail extends Component {
@@ -35,7 +36,8 @@ class GoodsDetail extends Component {
         commentTags: [],
         commentRank: [],
         detailsImg: [],
-        showChoosePage: false
+        showChoosePage: false,
+        goodsImg: ''
     }
     BScroll() {
         this.scroll = new BScroll('.goods-detail', {
@@ -138,6 +140,7 @@ class GoodsDetail extends Component {
             let commentTags = data.comment.index.tags.slice(1, 5);
             let commentRank = data.comment.content;
             let detailsImg = data.rags;
+            let goodsImg = data.goods.goodsInfo.compressedImg800;
             this.setState({
                 swiperImg,
                 price,
@@ -151,6 +154,7 @@ class GoodsDetail extends Component {
                 commentTags,
                 commentRank,
                 detailsImg,
+                goodsImg,
                 showContent: true
             })
         }).then(() => {
@@ -395,13 +399,13 @@ class GoodsDetail extends Component {
                             </div>
                         </div> : <LoadingPage/>
                 }
-                <div className="goods-choose_detail">
-                    <div className={this.state.showChoosePage ? 'choose-detail_bg choose-detail_showBg' : 'choose-detail_bg'} style={{ height: `${this.state.baseHeight}px` }} onClick={this.hideChoosePage.bind(this)}>           
-                    </div>
-                    <div className={this.state.showChoosePage ? 'choose-detail_content choose-detail_showContent' : 'choose-detail_content'}>
-
-                    </div>
-                </div>
+                <ChooseDetail 
+                    height={this.state.baseHeight}
+                    showPage={this.state.showChoosePage}
+                    hidePage={this.hideChoosePage.bind(this)}
+                    goodsImg={this.state.goodsImg}
+                    price={this.state.price}
+                />
             </div>
         );
     }
