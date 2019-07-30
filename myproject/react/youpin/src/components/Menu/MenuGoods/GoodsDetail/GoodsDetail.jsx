@@ -29,6 +29,8 @@ class GoodsDetail extends Component {
         summary: '',
         tagsFlag: false,
         tags: '',
+        shopTags: [],
+        tagsInfoList: [],
         service: [],
         services: {},
         commentNum: 0,
@@ -37,7 +39,9 @@ class GoodsDetail extends Component {
         commentRank: [],
         detailsImg: [],
         showChoosePage: false,
-        goodsImg: ''
+        goodsImg: '',
+        isChoose: false,
+        count: 1
     }
     BScroll() {
         this.scroll = new BScroll('.goods-detail', {
@@ -128,11 +132,20 @@ class GoodsDetail extends Component {
                 for (let i = 0; i < data.goods.shopTags.length; i ++) {
                     tagsList.push(data.goods.shopTags[i].name)
                 }
-                let tags = tagsList.join(' ');
+                let tags = `请选择${tagsList.join(' ')}`;
+                let arr = data.goods.goodsInfo.pids;
+                let productInfo = data.goods.productInfo;
+                let tagsInfoList = [];
+                let shopTags = data.goods.shopTags;
+                for (let item of arr) {
+                    tagsInfoList.push(productInfo[item])
+                }
                 this.setState({
-                    tags
+                    tags,
+                    tagsInfoList,
+                    shopTags
                 })
-            }
+            } 
             let service = data.goods.goodsInfo.service;
             let services = data.goods.services;
             let commentNum = data.comment.index.tags[0].count;
@@ -185,6 +198,48 @@ class GoodsDetail extends Component {
     hideChoosePage() {
         this.setState({
             showChoosePage: false
+        })
+    }
+    chooseEvent(index, idx) {
+        let shopTags = this.state.shopTags.slice(0);
+        let infoList = this.state.tagsInfoList;
+        let name = shopTags[index].tags[idx].name;
+        let targetArr = [];
+        for (let item of infoList) {
+            if (item.attributeValues[index] === name) {
+                targetArr = item.attributeValues.slice(0);
+                this.setState({
+                    goodsImg: item.compressedImg800,
+                    price: parseFloat(item.price / 100),
+                    name: item.name,
+                    summary: item.summary,
+                    tags: targetArr.join(' '),
+                    isChoose: true
+                })
+                break;
+            }
+        }
+        for (let i = 0; i < shopTags.length; i ++) {
+            for (let j = 0; j < shopTags[i].tags.length; j ++) {  
+                if (shopTags[i].tags[j].name === targetArr[i]) {
+                    shopTags[i].activeIndex = j;
+                }
+            }
+        }
+        this.setState({
+            shopTags
+        })
+    }
+    addNum() {
+        let num = this.state.count;
+        this.setState({
+            count: num + 1
+        })
+    }
+    reduceNUm() {
+        let num = this.state.count;
+        this.setState({
+            count: num - 1
         })
     }
     render() {
@@ -272,8 +327,12 @@ class GoodsDetail extends Component {
                                             <div className="goods-choose_text goods-choose_text1">
                                                 {
                                                     this.state.tagsFlag ? 
-                                                    <span>请选择{this.state.tags}</span> 
-                                                    : <span>1件</span>
+                                                    <span>
+                                                        {this.state.tags}{this.state.isChoose ? ` x ${this.state.count}` : ''}
+                                                    </span> : 
+                                                    <span>
+                                                        {this.state.count}件
+                                                    </span>
                                                 }
                                             </div>
                                             <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/device_shop_right_arrow.png" alt="" />
@@ -405,6 +464,14 @@ class GoodsDetail extends Component {
                     hidePage={this.hideChoosePage.bind(this)}
                     goodsImg={this.state.goodsImg}
                     price={this.state.price}
+                    shopTags={this.state.shopTags}
+                    chooseEvent={this.chooseEvent.bind(this)}
+                    tagsFlag={this.state.tagsFlag}
+                    tags={this.state.tags}
+                    isChoose={this.state.isChoose}
+                    count={this.state.count}
+                    addNum={this.addNum.bind(this)}
+                    reduceNum={this.reduceNUm.bind(this)}
                 />
             </div>
         );

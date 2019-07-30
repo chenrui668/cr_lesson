@@ -7,6 +7,15 @@ class ChooseDetail extends Component {
     hideChoosePage() {
         this.props.hidePage();
     }
+    chooseEvent(index, idx) {
+        this.props.chooseEvent(index, idx);
+    }
+    reduceNum() {
+        this.props.reduceNum();
+    }
+    addNum() {
+        this.props.addNum();
+    }
     render() {
         return (
             <div className="goods-choose_detail">
@@ -19,23 +28,51 @@ class ChooseDetail extends Component {
                             <div className="choose-info_price">
                                 ￥<span>{this.props.price}</span>
                             </div>
-                            <div className="choose-info_num">
-                                已选: &nbsp;<span>1件</span>
-                            </div>
+                            {
+                                this.props.tagsFlag ? 
+                                <div className="choose-info_num">
+                                    {this.props.isChoose ? '已选:' : ''}&nbsp;&nbsp;{this.props.tags}{this.props.isChoose ? ` x ${this.props.count}` : ''}
+                                </div> : 
+                                <div className="choose-info_num">
+                                    已选:&nbsp;&nbsp;{this.props.count}件
+                                </div>
+                            }
                         </div>
                         <div className="choose-header_close" onClick={this.hideChoosePage.bind(this)}>
                             <img src="https://m.xiaomiyoupin.com/youpin/static/m/res/images/detail_modal_icon_close.png" alt=""/>
                         </div>
                     </div>
                     <div className="choose-detail_container">
+                        {
+                            this.props.shopTags.map((item, index) => {
+                                return (
+                                    <div className="choose-container_tags" key={index + item}>
+                                        <p>{item.name}</p>
+                                        {
+                                            item.tags.map((itm, idx) => {
+                                                return (
+                                                    <div className={item.activeIndex === idx ? 'choose-tags_item choose-tags_active' : `choose-tags_item`} key={idx + itm} onClick={this.chooseEvent.bind(this, index, idx)}>
+                                                        <span>{itm.name}</span>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                )
+                            })
+                        }
                         <div className="choose-container_num">
                             <p>数量</p>
                             <div className="choose-num_btn">
-                                <img src="https://m.xiaomiyoupin.com/youpin/static/m/res/images/sku_icon_minus_no.png" alt=""/>
+                                {
+                                    this.props.count > 1 ?
+                                    <img src="https://app.xiaomiyoupin.com/youpin/static/m/res/images/sku_icon_minus_nor.png" onClick={this.reduceNum.bind(this)} alt=""/> :
+                                    <img src="https://m.xiaomiyoupin.com/youpin/static/m/res/images/sku_icon_minus_no.png"/>
+                                }
                                 <div className="choose-num">
-                                    <span>1</span>
+                                    <span>{this.props.count}</span>
                                 </div>
-                                <img src="https://m.xiaomiyoupin.com/youpin/static/m/res/images/sku_icon_plus_nor.png" alt=""/>
+                                <img src="https://m.xiaomiyoupin.com/youpin/static/m/res/images/sku_icon_plus_nor.png" onClick={this.addNum.bind(this)} alt=""/>
                             </div>
                         </div>
                     </div>
