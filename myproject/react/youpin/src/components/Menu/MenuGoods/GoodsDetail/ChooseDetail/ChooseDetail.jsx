@@ -76,6 +76,9 @@ class ChooseDetail extends Component {
                             </div>
                         </div>
                     </div>
+                    <div className="choose-detail_button">
+                        加入购物车
+                    </div>
                 </div>
             </div>
         );

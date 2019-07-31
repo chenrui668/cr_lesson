@@ -44,45 +44,52 @@ class GoodsDetail extends Component {
         count: 1
     }
     BScroll() {
-        this.scroll = new BScroll('.goods-detail', {
-            click: true,
-            probeType: 3,
-            scrollY: true,
-            bounce: false,
-            eventPassthrough: 'horizontal'
-        });
+        let a = document.querySelectorAll('.goods-detail');
+        if(a.length > 0) {
+            this.scroll = new BScroll('.goods-detail', {
+                click: true,
+                probeType: 3,
+                scrollY: true,
+                bounce: false,
+                eventPassthrough: 'horizontal'
+            });
+        }
     }
     scrollEvent() {
         let scrollHeight = [0];
         for (let i = 1; i < 4; i++) {
-            let height = this.refs[`scrollBox${i}`].offsetTop - this.refs.titleBox.offsetHeight;
-            scrollHeight.push(height);
+            if (this.refs[`scrollBox${i}`]) {
+                let height = this.refs[`scrollBox${i}`].offsetTop - this.refs.titleBox.offsetHeight;
+                scrollHeight.push(height);    
+            }
         }
         this.setState({
             scrollHeight
         })
-        this.scroll.on('scroll', (e) => {
-            let changeHeight = this.refs.swiperBox.offsetHeight - this.refs.titleBox.offsetHeight;
-            if (- e.y < changeHeight) {
-                var titleOpacity = Math.round(parseFloat(- e.y / changeHeight) * 100) / 100;
-                var changeIcon = false;
-            } else {
-                titleOpacity = 1;
-                changeIcon = true;
-            }
-            const scrollH = this.state.scrollHeight;
-            let index = 0;
-            for (let i = 0; i < scrollH.length; i++) {
-                if (- e.y >= scrollH[i] && (- e.y < scrollH[i + 1] || scrollH[i + 1] === undefined)) {
-                    index = i
+        if (this.scroll) {
+            this.scroll.on('scroll', (e) => {
+                let changeHeight = this.refs.swiperBox.offsetHeight - this.refs.titleBox.offsetHeight;
+                if (- e.y < changeHeight) {
+                    var titleOpacity = Math.round(parseFloat(- e.y / changeHeight) * 100) / 100;
+                    var changeIcon = false;
+                } else {
+                    titleOpacity = 1;
+                    changeIcon = true;
                 }
-            }
-            this.setState({
-                titleOpacity,
-                changeIcon,
-                titleIndex: index
+                const scrollH = this.state.scrollHeight;
+                let index = 0;
+                for (let i = 0; i < scrollH.length; i++) {
+                    if (- e.y >= scrollH[i] && (- e.y < scrollH[i + 1] || scrollH[i + 1] === undefined)) {
+                        index = i
+                    }
+                }
+                this.setState({
+                    titleOpacity,
+                    changeIcon,
+                    titleIndex: index
+                })
             })
-        })
+        }
     }
     Swiper() {
         new Swiper('.swiper-container', {
@@ -183,7 +190,12 @@ class GoodsDetail extends Component {
         this.axiosRequest();
     }
     componentWillUnmount() {
-        this.scroll.destroy();
+        if(this.scroll) {
+            this.scroll.destroy();
+        }
+        this.setState = (state, callback) => {
+            return;
+        };
     }
     changeIndex(index) {
         if (index !== this.state.titleIndex) {
