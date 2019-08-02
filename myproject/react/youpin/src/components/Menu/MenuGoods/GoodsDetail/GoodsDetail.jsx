@@ -41,7 +41,9 @@ class GoodsDetail extends Component {
         showChoosePage: false,
         goodsImg: '',
         isChoose: false,
-        count: 1
+        count: 1,
+        buttonText: '',
+        shopStatus: 1
     }
     BScroll() {
         let a = document.querySelectorAll('.goods-detail');
@@ -202,7 +204,18 @@ class GoodsDetail extends Component {
             this.scroll.scrollTo(0, - this.state.scrollHeight[index], 700)
         }
     }
-    chooseDetail() {
+    chooseDetail(flag) {
+        if (flag > 0) {
+            this.setState({
+                buttonText: '确定',
+                shopStatus: flag
+            })
+        } else {
+            this.setState({
+                buttonText: '加入购物车',
+                shopStatus: 1
+            })
+        }
         this.setState({
             showChoosePage: true
         })
@@ -484,7 +497,29 @@ class GoodsDetail extends Component {
                     count={this.state.count}
                     addNum={this.addNum.bind(this)}
                     reduceNum={this.reduceNUm.bind(this)}
+                    buttonText={this.state.buttonText}
+                    shopStatus={this.state.shopStatus}
                 />
+                <div className="goods-detail_footer">
+                    <div className="goods-footer_collect">
+                        <img src="https://m.xiaomiyoupin.com/youpin/static/m/res/images/device_shop_detail_unfavor_v3.png" alt=""/>
+                        <span>收藏</span>
+                    </div>
+                    <div className="goods-footer_collect">
+                        <Link to="/shopCart">
+                            <img src="https://m.xiaomiyoupin.com/youpin/static/m/res/images/shop_cart_v3.png" alt=""/>
+                            <span>购物车</span>
+                        </Link>
+                    </div>
+                    <div className="goods-footer_button">
+                        <div className="goods-footer_addShopCart goods-footer_buttonBox" onClick={this.chooseDetail.bind(this, 1)}>
+                            <span>加入购物车</span>
+                        </div>
+                        <div className="goods-footer_buyNow goods-footer_buttonBox" onClick={this.chooseDetail.bind(this, 2)}>
+                            <span>立即购买</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

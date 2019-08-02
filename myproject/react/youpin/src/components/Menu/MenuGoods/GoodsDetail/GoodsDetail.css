@@ -17,7 +17,7 @@
 }
 .detail-header_icon1 {
     position: fixed;
-    z-index: 52;
+    z-index: 60;
     top: 0;
     left: 0;
     width: 2.4rem;
@@ -32,7 +32,7 @@
 }
 .detail-header_icon2 {
     position: fixed;
-    z-index: 52;
+    z-index: 60;
     top: 0;
     right: 0.5rem;
     height: 2.4rem;
@@ -311,4 +311,61 @@
     box-sizing: border-box;
     padding: 0.25rem;
     height: 13.3rem;
+}
+.goods-detail_footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 2.75rem;
+    width: 100%;
+    background-color: #fff;
+    z-index: 51;
+    border-top: 0.05rem solid rgb(191, 191, 192);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.goods-footer_collect {
+    width: 2.1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(122, 122, 122);
+    font-size: 10px;
+}
+.goods-footer_collect a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-decoration: none;
+    color: rgb(122, 122, 122);
+}
+.goods-footer_collect img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.goods-footer_button {
+    height: 1.9rem;
+    width: 12.8rem;
+    border-radius: 1.9rem;
+    overflow: hidden;
+    margin-left: 0.7rem;
+}
+.goods-footer_buttonBox {
+    height: 100%;
+    width: 50%;
+    display: inline-block;
+    line-height: 1.9rem;
+    text-align: center;
+    font-size: 0.65rem;
+    font-weight: bold;
+    color: #fff;
+}
+.goods-footer_addShopCart {
+    background-color: rgb(209, 169, 110);
+}
+.goods-footer_buyNow {
+    background-color: rgb(191, 17, 17);
 }

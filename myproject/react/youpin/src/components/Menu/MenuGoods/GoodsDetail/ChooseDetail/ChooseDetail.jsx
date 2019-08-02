@@ -77,7 +77,7 @@ class ChooseDetail extends Component {
                         </div>
                     </div>
                     <div className="choose-detail_button">
-                        加入购物车
+                        {this.props.buttonText}
                     </div>
                 </div>
             </div>
