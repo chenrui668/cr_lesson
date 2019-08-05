@@ -5,7 +5,7 @@ import './App.css';
 import Main from './components/Main';
 import Menu from './components/Menu';
 import Taste from './components/Taste';
-import ShopCart from './components/ShopCart';
+import ShopCart from './container/ShopCart';
 import User from './components/User';
 
 

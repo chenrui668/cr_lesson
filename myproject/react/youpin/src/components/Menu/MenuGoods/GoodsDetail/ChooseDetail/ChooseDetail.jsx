@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import './ChooseDetail.css'
-
+import './ChooseDetail.css';
+import Remind from '../../../../../common/remind/Remind';
 
 class ChooseDetail extends Component {
-    state = {}
+    state = {
+        showRemind1: false,
+        showRemind2: false
+    }
     hideChoosePage() {
         this.props.hidePage();
     }
@@ -15,6 +18,35 @@ class ChooseDetail extends Component {
     }
     addNum() {
         this.props.addNum();
+    }
+    addEvent() {
+        if (!this.props.tagsFlag || this.props.isChoose) {
+            this.setState({
+                showRemind1: true
+            })
+            setTimeout(() => {
+                this.setState({
+                    showRemind1: false
+                })
+            }, 1500)
+            let item = {
+                img: this.props.goodsImg,
+                name: this.props.name,
+                price: this.props.price,
+                count: this.props.count
+            }
+            this.props.addShopCart(item);
+            this.props.hidePage();
+        } else {
+            this.setState({
+                showRemind2: true
+            })
+            setTimeout(() => {
+                this.setState({
+                    showRemind2: false
+                })
+            }, 1500)
+        }
     }
     render() {
         return (
@@ -76,10 +108,24 @@ class ChooseDetail extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="choose-detail_button">
-                        {this.props.buttonText}
-                    </div>
+                    {
+                        this.props.shopStatus === 1 ? 
+                        <div className="choose-detail_button" onClick={this.addEvent.bind(this)}>
+                            {this.props.buttonText}
+                        </div> : 
+                        <div className="choose-detail_button">
+                            {this.props.buttonText}
+                        </div>
+                    }
                 </div>
+                <Remind 
+                    status={this.state.showRemind1}
+                    text='添加购物车成功'
+                /> 
+                <Remind 
+                    status={this.state.showRemind2}
+                    text={this.props.tags}
+                /> 
             </div>
         );
     }

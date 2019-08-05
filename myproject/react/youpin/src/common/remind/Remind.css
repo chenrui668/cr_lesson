@@ -1,0 +1,12 @@
+.remind-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    padding: 0.6rem 1rem;
+    font-size: 0.7rem;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0.25rem;
+}

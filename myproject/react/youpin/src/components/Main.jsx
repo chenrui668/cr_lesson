@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom
 import Swiper from 'swiper/dist/js/swiper.js';
 import 'swiper/dist/css/swiper.min.css';
 import './Main.css';
-
 class Main extends Component {
     state = {
         menu1List: [
@@ -28,7 +27,8 @@ class Main extends Component {
                 url: 'https://img.youpin.mi-img.com/800_pic/71de23f40af4c2c1d4c3744ad44dddda.png'
             }
         ],
-        containerHeight: 0
+        containerHeight: 0,
+        showRemind: false
     }
     componentDidMount() {
         new Swiper('.swiper-container', {

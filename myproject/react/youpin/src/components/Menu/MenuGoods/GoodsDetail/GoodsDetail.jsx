@@ -5,7 +5,7 @@ import axios from 'axios';
 import './GoodsDetail.css';
 import LoadingPage from '../../../../common/loadingPage/LoadingPage';
 import GoodsItem from '../../../../common/goodsItem/GoodsItem';
-import ChooseDetail from './ChooseDetail/ChooseDetail';
+import ChooseDetail from '../../../../container/ChooseDetail';
 import Swiper from 'swiper/dist/js/swiper.js';
 import 'swiper/dist/css/swiper.min.css';
 class GoodsDetail extends Component {
@@ -499,6 +499,7 @@ class GoodsDetail extends Component {
                     reduceNum={this.reduceNUm.bind(this)}
                     buttonText={this.state.buttonText}
                     shopStatus={this.state.shopStatus}
+                    name={this.state.name}
                 />
                 <div className="goods-detail_footer">
                     <div className="goods-footer_collect">
@@ -509,6 +510,12 @@ class GoodsDetail extends Component {
                         <Link to="/shopCart">
                             <img src="https://m.xiaomiyoupin.com/youpin/static/m/res/images/shop_cart_v3.png" alt=""/>
                             <span>购物车</span>
+                            {
+                                this.props.totalCount > 0 ? 
+                                <div className="total-count">
+                                    {this.props.totalCount}
+                                </div> : ''
+                            }
                         </Link>
                     </div>
                     <div className="goods-footer_button">

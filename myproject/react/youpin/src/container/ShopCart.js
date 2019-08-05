@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
-import GoodsDetail from '../components/Menu/MenuGoods/GoodsDetail/GoodsDetail';
+import ShopCart from '../components/ShopCart'; 
 
 const mapStateToprops = (state) => {
     return {
-        recommendList: state.recommendList,
-        totalCount: state.shopCart.totalCount
+        shopCart: state.shopCart
     }
 }
 
@@ -19,4 +18,4 @@ const mapStateToprops = (state) => {
 //     }
 // }
 
-export default connect(mapStateToprops, null)(GoodsDetail); 
+export default connect(mapStateToprops, null)(ShopCart);
