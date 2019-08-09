@@ -15,6 +15,7 @@
     text-align: center;
     font-size: 0.6rem;
     color: #7f6144;
+    position: relative;
 }
 .tabbar-link a {
     text-decoration: none;
@@ -55,4 +56,18 @@
 }
 .tabbar-link .active5 {
     background-position: 0 -10.8rem;
+}
+
+.tabbar-total-count {
+    position: absolute;
+    left: 2.3rem;
+    top: 0.1rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 0.4rem;
+    background-color: red;
+    color: #fff;
+    font-size: 0.6rem;
+    line-height: 0.8rem;
+    text-align: center;
 }

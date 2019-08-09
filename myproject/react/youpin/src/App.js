@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
-import Tabbar from './common/tabbar/Tabbar';
+import Tabbar from './container/tabbar';
 import './App.css';
 import Main from './components/Main';
 import Menu from './components/Menu';

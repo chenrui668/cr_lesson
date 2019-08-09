@@ -37,6 +37,15 @@ class Tabbar extends Component {
                     this.state.routes.map((item, index) => {
                         return (
                             <div className="tabbar-link" key={index + item}>
+                                {
+                                    index === 3 && this.props.totalCount > 0 ?
+                                    <div className="tabbar-total-count">
+                                        {
+                                            this.props.totalCount > 9 ? '9+' : this.props.totalCount
+                                        }
+                                    </div> : 
+                                    ''
+                                }
                                 <NavLink to={item.route} activeClassName={`active${index + 1}`} className={`img${index + 1}`}>
                                 </NavLink>
                                 {item.title}
