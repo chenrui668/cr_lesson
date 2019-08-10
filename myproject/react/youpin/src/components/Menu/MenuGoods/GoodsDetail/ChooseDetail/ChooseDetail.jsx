@@ -33,7 +33,9 @@ class ChooseDetail extends Component {
                 img: this.props.goodsImg,
                 name: this.props.name,
                 price: this.props.price,
-                count: this.props.count
+                count: this.props.count,
+                isChoose: true,
+                deleteFlag: false
             }
             this.props.addShopCart(item);
             this.props.hidePage();
@@ -47,6 +49,11 @@ class ChooseDetail extends Component {
                 })
             }, 1500)
         }
+    }
+    componentWillUnmount() {
+        this.setState = (state, callback) => {
+            return;
+        };
     }
     render() {
         return (

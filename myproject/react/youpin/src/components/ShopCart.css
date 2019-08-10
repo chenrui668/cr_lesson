@@ -1,0 +1,207 @@
+.cart-cantainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    overflow: scroll;
+    width: 100%;
+    background-color: rgb(243, 243, 243);
+}
+.cart-content {
+    width: 100%;  
+    background-image: url('https://app.xiaomiyoupin.com/youpin/static/m/res/images/checkout_new_top_bg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.cart-header {
+    height: 4.4rem;
+    width: 100%;
+    display: flex;
+    color: #fff;
+}
+.cart-header_backImg {
+    height: 100%;
+    width: 2.2rem;
+    line-height: 4.4rem;
+}
+.cart-header_backImg img {
+    height: 2.2rem;
+    width: 2.2rem;
+    vertical-align: middle;
+}
+.cart-header_title {
+    flex: 1;
+    height: 100%;
+    text-align: center;
+    line-height: 4.4rem;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.cart-header_btn {
+    width: 2.2rem;
+    height: 100%;
+    font-size: 0.7rem;
+    line-height: 4.4rem;
+}
+.cart-list {
+    width: 100%;
+    padding: 0 0.5rem 2.7rem 0.5rem;
+    box-sizing: border-box;
+}
+.cart-list .cart-list_item {
+    width: 100%;
+    height: 6.7rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    padding: 1.2rem 0.1rem 1.2rem 0;
+    box-sizing: border-box;
+    margin-bottom: 0.5rem;
+}
+.cart-item_chooseBtn {
+    height: 100%;
+    width: 0.9rem;
+    padding: 0 0.5rem;
+    line-height: 4.3rem;
+}
+.cart-item_chooseBtn img{
+    height: 0.9rem;
+    width: 0.9rem;
+}
+.cart-item_goodsImg {
+    height: 100%;
+    width: 4.3rem;
+    background-color: rgb(243, 243, 243);
+    border-radius: 0.2rem;
+    margin-right: 0.5rem;
+}
+.cart-item_goodsImg img {
+    height: 4.3rem;
+    width: 4.3rem;
+}
+.cart-item_info {
+    flex: 1;
+    height: 100%;
+    position: relative;
+}
+.item-info_name {
+    font-size: 0.7rem;
+    margin-top: 0.2rem;
+    color: rgb(51, 51, 51);
+}
+.item-info_price {
+    margin-top: 0.3rem;
+    color: rgb(191, 17, 17);
+    font-size: 0.6rem;
+}
+.item-info_price span {
+    font-size: 0.9rem;
+}
+.item-info_count {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+}
+.item-info_count img {
+    width: 1.3rem;
+    height: 1rem;
+}
+.item-info_count .item-count_num {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1rem;
+    text-align: center;
+    line-height: 1rem;
+    background-color: rgb(244, 244, 244);
+    border-radius: 0.1rem;
+    color: rgb(51, 51, 51);
+    font-size: 0.65rem;
+}
+.cart-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 21;
+    background-color: #fff;
+    height: 2.7rem;
+    width: 100%;
+    border-top: 0.05rem solid rgb(214, 214, 214);
+    box-sizing: border-box;
+    display: flex;
+}
+.cart-footer_chooseBtn {
+    height: 100%;
+    width: 3.2rem;
+    display: flex;
+    align-items: center;
+    padding-left: 0.6rem;
+    color: rgb(51, 51, 51);
+    font-size: 0.65rem;
+}
+.cart-footer_chooseBtn img {
+    height: 0.9rem;
+    width: 0.9rem;
+    margin-right: 0.4rem;
+}
+.cart-footer_right {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.cart-footer_price {
+    font-size: 0.65rem;
+    margin-right: 0.3rem;
+}
+.cart-footer_price span {
+    color: rgb(191, 17, 17);
+    font-size: 0.8rem;
+}
+.cart-footer_payBtn {
+    margin-right: 0.4rem;
+    width: 4.8rem;
+    height: 1.9rem;
+    border-radius: 1.9rem;
+    background-color: rgb(191, 17, 17);
+    text-align: center;
+    line-height: 1.9rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #fff;
+}
+.cart-empty_bg {
+    width: 100%;
+    height: 20rem;
+    background-color: rgb(243, 243, 243);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.cart-empty_bg img {
+    height: 7rem;
+    width: 7rem;
+}
+.cart-empty_bg span {
+    margin: 0.5rem 0;
+    color: rgb(102, 102, 102);
+    font-size: 0.8rem;
+}
+.cart-empty_bg a {
+    text-decoration: none;
+    display: inline-block;
+    width: 5rem;
+    height: 1.8rem;
+    text-align: center;
+    line-height: 1.8rem;
+    border: 0.05rem solid rgb(187, 158, 114);
+    border-radius: 0.9rem;
+}
+.cart-empty_bg a span {
+    color: rgb(187, 158, 114);
+    font-size: 0.8rem;
+}

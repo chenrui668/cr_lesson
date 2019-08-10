@@ -7,15 +7,50 @@ const mapStateToprops = (state) => {
     }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         addRecommendList: (list) => {
-//             dispatch({
-//                 type: 'addRecommendList',
-//                 value: list
-//             });
-//         }
-//     }
-// }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeChooseStatus: (index) => {
+            dispatch({
+                type: 'changeChooseStatus',
+                value: index
+            });
+        },
+        changeTotalChooseStatus: (flag) => {
+            dispatch({
+                type: 'changeTotalChooseStatus',
+                value: flag
+            });
+        },
+        addShopCount: (index) => {
+            dispatch({
+                type: 'addShopCount',
+                value: index
+            });
+        },
+        reduceShopCount: (index) => {
+            dispatch({
+                type: 'reduceShopCount',
+                value: index
+            });
+        },
+        changeDeleteFlag: (index) => {
+            dispatch({
+                type: 'changeDeleteFlag',
+                value: index
+            });
+        },
+        changeTotalDeleteStatus: (flag) => {
+            dispatch({
+                type: 'changeTotalDeleteStatus',
+                value: flag
+            });
+        },
+        deleteShopCartItem: () => {
+            dispatch({
+                type: 'deleteShopCartItem'
+            });
+        }
+    }
+}
 
-export default connect(mapStateToprops, null)(ShopCart);
+export default connect(mapStateToprops, mapDispatchToProps)(ShopCart);
